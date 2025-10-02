@@ -1,2 +1,3 @@
-# Genuine
-In-progress Graduation Project
+# PROJECT: Gənuine 
+
+**In-progress Linguistics Graduation Project**
