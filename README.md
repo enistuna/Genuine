@@ -1,5 +1,5 @@
-<img width="500" height="250" alt="Graduation Project Logo Ideas" src="https://github.com/user-attachments/assets/6877129e-db11-486d-858d-02cde2e3450a" />
+<img width="640" height="360" alt="thumbnail" src="https://github.com/user-attachments/assets/c786fb94-d8c9-420a-b488-a12338dffa36" />
 
-# PROJECT: Gənuine 
+# PROJECT: Gənuine
 
 **In-progress Linguistics Graduation Project**
