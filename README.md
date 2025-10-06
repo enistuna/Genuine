@@ -1,4 +1,4 @@
-<img width="640" height="360" alt="thumbnail" src="https://github.com/user-attachments/assets/c786fb94-d8c9-420a-b488-a12338dffa36" />
+<img width="1280" height="720" alt="thumbnail" src="https://github.com/user-attachments/assets/5bfc9b8a-4c70-42bf-83d9-3dbe63e87f3a" />
 
 # PROJECT: Gənuine
 
