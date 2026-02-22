@@ -1,0 +1,15 @@
+.env
+
+__pycache__/
+*.pyc
+
+.cache/
+src/rasa/.cache/
+.rasa/
+.chroma/
+
+*.db
+*.sqlite
+
+.DS_Store
+

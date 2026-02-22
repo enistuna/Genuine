@@ -1,0 +1,84 @@
+version: "3.1"
+
+stories:
+- story: Transfer funds - Happy Path (all info provided)
+  steps:
+  - intent: transfer_funds
+    entities:
+    - user: "Enis"
+    - money_sum: "50 TL"
+  - slot_was_set:
+    - user: "Enis"
+  - slot_was_set:
+    - money_sum: "50 TL"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_confirm_transfer
+  - intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask
+
+- story: Transfer funds - Form filling path
+  steps:
+  - intent: transfer_funds
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - requested_slot: user
+  - action: utter_ask_user
+  - intent: inform
+    entities:
+    - user: "Ayşe"
+  - action: transfer_form
+  - slot_was_set:
+    - user: "Ayşe"
+  - slot_was_set:
+    - requested_slot: money_sum
+  - action: utter_ask_money_sum
+  - intent: inform
+    entities:
+    - money_sum: "100 lira"
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_confirm_transfer
+  - intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask
+
+
+- story: Interactive conversation
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: check_balance
+  - action: action_check_balance
+  - action: utter_ask
+  - intent: transfer_funds
+    entities:
+    - user: "Ahmet"
+  - slot_was_set:
+    - user: "Ahmet"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - requested_slot: money_sum
+  - action: utter_ask_money_sum
+  - intent: inform
+    entities:
+    - money_sum: "250 TL"
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_confirm_transfer
+  - intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask

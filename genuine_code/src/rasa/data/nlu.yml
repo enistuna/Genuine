@@ -1,0 +1,185 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - Merhaba
+    - Merhabalar
+    - Selam
+    - Selamlar
+    - Nasılsın
+    - Naber
+    - Günaydın
+    - İyi akşamlar
+    - Selam
+    - Slm
+    - Hey
+    - Esenlikler
+
+- intent: goodbye
+  examples: |
+    - görüşmek üzere
+    - görüşürüz
+    - bye
+    - bay bay
+    - hoşçakal
+    - iyi günler
+    - iyi geceler
+
+- intent: affirm
+  examples: |
+    - aynen
+    - doğru
+    - evet
+    - tabi
+    - tabiki
+    - kesinlikle
+    - yes
+    - onayla
+
+- intent: deny
+  examples: |
+    - yanlış
+    - hayır
+    - asla
+    - pek değil
+    - değiştir
+    - bence değil
+    - doğru değil
+    - no
+    - vazgeç
+
+- intent: inform
+  examples: |
+    - [Enis Tuna](user)
+    - [Ahmet Yılmaz](user)
+    - [Ayşe](user)
+    - [50 TL](money_sum)
+    - [bin lira](money_sum)
+    - [1000 TL](money_sum)
+    - evet [Enis](user)
+    - "[1234567890]"(account_number)
+    - hesap no [0987654321](account_number)
+    - [1234-567890-12](account_number) nolu hesaba
+    - hesap numaram [5555-112233-99](account_number)
+
+- intent: request_bot_info
+  examples: |
+    - sen kimsin?
+    - ne botusun?
+    - nasıl bir chatbotsun?
+    - ismin nedir?
+    - kim olduğunu öğrenebilir miyim?
+    - nasıl bir bot olduğunu öğrenebilir miyim?
+    - kiminle konuşuyorum?
+    - kendini açıklayabilir misin?
+    - kendini anlatabilir misin?
+    - kendini anlat
+    - asistan mısın?
+    - hangi asistansın?
+    - hangi asistanla konuşuyorum?
+
+- intent: check_balance
+  examples: |
+    - hesabıma bakar mısın?
+    - ne kadar param var?
+    - kaç param var?
+    - bakiyem ne kadar?
+    - güncel bakiye
+    - bana bakiyemi söyle
+    - paramı göster
+    - hesapta ne var?
+    - bakiyeyi kontrol et
+    - bakiyeme bakar mısın?
+    - hesabımda ne kadar param var?
+    - birikimim ne kadar?
+    - birikimime bakar mısın?
+    - paramı öğrenmek istiyorum
+
+- intent: check_accountNumber
+  examples: |
+    - hesap numarama bakar mısın
+    - hesap numaram ne
+    - hesap numaram nedir
+    - numarammı öğrenebilir miyim?
+    - numaramı söyle
+    - numaramı öğrenmek istiyorum
+    - hesap numaram nedir
+    - hesap numaramı göster
+    - hesap numaramı gösterebilir misin?
+    - iban numaramı unuttum
+    - ibanım neydi
+
+- intent: transfer_funds
+  examples: |
+    - para yollayabilir misin
+    - para yolla
+    - [Ayşe](user)'ye [50 TL](money_sum) gönder
+    - [Mehmet](user) adlı kişiye [100 lira](money_sum) yollar mısın?
+    - hesabımdan [Veli](user)'ye [250 TL](money_sum) aktar
+    - [Fatma](user) için [500 TL](money_sum)
+    - para transferi yapmak istiyorum
+    - [Ali](user) adlı kullanıcıya [yüz yirmi beş tl](money_sum) göndermek istiyorum
+    - birine para yollayacağım
+    - [Zeynep](user)'e [1000 TL](money_sum) yolla
+    - [Mustafa](user) için [on beş euro](money_sum)
+    - ücreti yolla
+    - havale yap
+    - para göndermem lazım
+    - [Ayşe](user) ye para aktar
+
+- intent: list_transactions
+  examples: |
+    - işlemleri gösterebilir misin
+    - işlemleri göster
+    - yollanan paraları gösterebilir misin?
+    - son işlemlerim neler
+    - para transferlerimi listele
+    - harcamalarımı göster
+    - son aktivitelerim
+    - hesap dökümü
+    - son yaptığım işlemleri listele
+    - hesap işlemlerini göstermeni istiyorum
+    - işlemlerimi görmek istiyorum
+    - işlemlerimi öğrenmek istiyorum
+
+
+- intent: ask_informational
+  examples: |
+    - Kredi kartı aidatı ne kadar?
+    - Faiz oranları nedir?
+    - Mevduat faizi kaç?
+    - Şifremi nasıl korurum?
+    - Güvenlik prosedürleri
+    - Genel müdürlük adresi nerede?
+    - Müşteri hizmetlerine nasıl ulaşırım?
+    - Altın hesabı açabilir miyim?
+    - Yatırım tavsiyesi ver
+    - Bankacılık hakkında bilgi verebilir misin?
+    - Bankacılık nedir?
+    - Sistem hakkında bilgi ver
+    - Ne yapabilirsin?
+    - Bireysel Emeklilik Sistemi nedir?
+    - Bireysel Emeklilik Sistemi nedir?
+    - BES nedir?
+    - Havale ile EFT arasında ne fark var?
+    - Havale ve EFT farkı nedir?
+    - EFT ne demek?
+    - Havale nedir?
+    - Altın hesabı nedir?
+    - Kredi notu nedir?
+    - Faiz nedir?
+    - Enflasyon ne demek?
+    - Banka kartı ile kredi kartı farkı
+    - Swift kodu nedir?
+    - İban nedir?
+
+- synonym: kredi
+  examples: |
+    - kredi kartı hesabı
+    - kredi hesabı
+    - kredi kartı
+
+- regex: account_number
+  examples: |
+    - \d{10,12}

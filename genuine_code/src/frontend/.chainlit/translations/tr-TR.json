@@ -1,0 +1,22 @@
+{
+  "components": {
+    "molecules": {
+      "newChatButton": {
+        "newChat": "Yeni Sohbet"
+      },
+      "tasklist": {
+        "title": "Görevler"
+      }
+    },
+    "organisms": {
+      "chat": {
+        "input": {
+          "placeholder": "Mesajınızı yazın..."
+        },
+        "history": {
+          "title": "Geçmiş"
+        }
+      }
+    }
+  }
+}

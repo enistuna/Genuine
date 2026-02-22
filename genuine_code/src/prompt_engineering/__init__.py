@@ -1,0 +1,1 @@
+from .templates import get_bank_policy_text

@@ -1,0 +1,139 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - request_bot_info
+  - check_balance
+  - check_accountNumber
+  - transfer_funds
+  - list_transactions
+  - affirm
+  - deny
+  - inform
+  - nlu_fallback
+  - ask_informational
+
+responses:
+  
+  utter_greet:
+  - text: "Merhabalar! Size nasıl yardımcı olabilirim?"
+  - text: "Merhabalar! Size hangi konularda yardımcı olmamı istersiniz?"
+  - text: "Selamlar! Bugün finansal işlemlerinizde size nasıl destek olabilirim?"
+  - text: "Hoş geldiniz! Ben Gen. Size nasıl yardımcı olabilirim?"
+
+  utter_goodbye:
+  - text: "Görüşmek üzere, iyi günler!"
+  - text: "Tekrardan görüşmek dileğiyle!"
+  - text: "Yardımcı olabileceğim başka bir konu yoksa iyi günler dilerim."
+
+  utter_request_bot_info:
+  - text: "Benim ismim Gen. Finansal işlemleriniz için geliştirilmiş dijital asistanınızım."
+  - text: "Benim ismim Gen. Dijital bankacılıkta yanınızda bulunan takım arkadaşınızım."
+  - text: "Benim ismim Gen. Herhangi bir bankacılık ihtiyacınızda danışabileceğiniz kişisel asistanınızım."
+
+  utter_ask_rephrase:
+  - text: "Üzgünüm, ne istediğinizi anlayamadım. Farklı bir şekilde ifade edebilir misiniz?"
+  - text: "Dediğinizi tam olarak anlayamadım, lütfen yeniden ifade etmeyi deneyin."
+
+  utter_ask:
+  - text: "Başka hangi konuda yardım istersiniz?"
+  - text: "Size başka nasıl yardımcı olabilirim?"
+  - text: "Yapmak veya sormak istediğiniz başka neler var?"
+  - text: "Aklınıza takılan başka bir şey var mı?"
+  - text: "Sıradaki işlemimiz ne olsun?"
+
+  utter_check_balance:
+  - text: "Hesabınızdaki güncel bakiye {balance} TL."
+
+  utter_check_accountNumber:
+  - text: "Sisteme kayıtlı hesap numaranız: {account_number}"
+
+  utter_transfer_funds:
+  - text: "{user} adlı kişiye {money_sum} tutarındaki para transferi işleminiz başarıyla tamamlanmıştır."
+
+  utter_list_transactions:
+  - text: "Gerçekleştirdiğiniz son işlemleriniz listeleniyor..."
+
+  utter_ask_user:
+  - text: "Elbette, kime para göndermek istersiniz?"
+  - text: "Elbette, kime para göndermek istiyorsunuz?"
+  - text: "Tabii ki de, kime para göndermek istersiniz?"
+  - text: "Tabii ki de, kime para göndermek istiyorsunuz?"
+
+  utter_ask_money_sum:
+  - text: "Peki, ne kadar para göndermek istersiniz?"
+  - text: "Ne kadar para göndermek istersiniz?"
+
+  utter_confirm_transfer:
+  - text: "{user} adlı kişiye {money_sum} göndermek üzeresiniz. Onaylıyor musunuz?"
+
+  utter_transfer_cancelled:
+  - text: "İşlem iptal edildi."
+
+actions:
+  - action_check_balance
+  - action_transfer_funds
+  - action_list_transactions
+  - action_answer_faq
+
+entities:
+  - account_number
+  - money_sum
+  - user
+  - name
+
+slots:
+  persona:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: custom
+  user:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user
+    - type: from_text
+      conditions:
+      - active_loop: transfer_form
+        requested_slot: user
+  money_sum:
+    type: any
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: money_sum
+    - type: from_text
+      conditions:
+      - active_loop: transfer_form
+        requested_slot: money_sum
+  account_number:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: account_number
+  balance:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+forms:
+  transfer_form:
+    required_slots:
+      - user
+      - money_sum
+    ignored_intents:
+      - greet
+      - goodbye
+      - request_bot_info
+      - check_balance
+      - ask_informational
+
+session_config:
+  session_expiration_time: 180
+  carry_over_slots_to_new_session: true
+

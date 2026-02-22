@@ -1,0 +1,98 @@
+stories:
+- story: Check balance path
+  steps:
+  - user: "hesabıma bakar mısın"
+    intent: check_balance
+  - action: action_check_balance
+  - action: utter_check_balance
+  - action: utter_ask
+
+- story: List transactions path
+  steps:
+  - user: "işlemleri göster"
+    intent: list_transactions
+  - action: action_list_transactions
+  - action: utter_list_transactions
+  - action: utter_ask
+
+- story: Transfer funds happy path with confirmation
+  steps:
+  - user: "Enis'e 50 lira yolla"
+    intent: transfer_funds
+    entities:
+    - user: "Enis"
+    - money_sum: "50 lira"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - user: "Enis"
+  - slot_was_set:
+    - money_sum: "50 lira"
+  - active_loop: null
+  - action: utter_confirm_transfer
+  - user: "evet"
+    intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask
+
+- story: Transfer funds happy path with denial
+  steps:
+  - user: "Enis'e 50 lira yolla"
+    intent: transfer_funds
+    entities:
+    - user: "Enis"
+    - money_sum: "50 lira"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - user: "Enis"
+  - slot_was_set:
+    - money_sum: "50 lira"
+  - active_loop: null
+  - action: utter_confirm_transfer
+  - user: "hayır"
+    intent: deny
+  - action: utter_transfer_cancelled
+  - action: utter_ask
+
+- story: Transfer funds form activation and slot filling with confirmation
+  steps:
+  - user: "para yollayabilir misin"
+    intent: transfer_funds
+  - action: transfer_form
+  - active_loop: transfer_form
+  - action: utter_ask_user
+  - user: "Ayşe'ye"
+    intent: inform
+    entities:
+    - user: "Ayşe"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - action: utter_ask_money_sum
+  - user: "100 TL"
+    intent: inform
+    entities:
+    - money_sum: "100 TL"
+  - action: transfer_form
+  - active_loop: null
+  - action: utter_confirm_transfer
+  - user: "onaylıyorum"
+    intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask
+
+- story: Full interaction with goodbye
+  steps:
+  - user: "selam"
+    intent: greet
+  - action: utter_greet
+  - user: "kaç param var"
+    intent: check_balance
+  - action: action_check_balance
+  - action: utter_check_balance
+  - action: utter_ask
+  - user: "görüşürüz"
+    intent: goodbye
+  - action: utter_goodbye
