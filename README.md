@@ -38,4 +38,5 @@
 
 # Notes
 
+* This project is the successor of [Finchat](https://github.com/enistuna/Finchat) project. I published my bachelors graduation [thesis paper]() on comparative analysis of the two project's pragmatic competancy.
 * For any question, contribution or inquiry, [send me an email](mailto:enissstuna@gmail.com).
