@@ -1,4 +1,4 @@
-<img width="1280" height="180" alt="logo" src="project_documentation_files\v2.png" />
+<img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
 
 # Gənuine - Enchanced AI Fintech Chatbot
 **A Turkish Fintech Conversational AI that blends Rule-Based systems with GenAI**
@@ -34,7 +34,7 @@
 # Rasa Conversation Flow Diagram
 
 # Explanation Video
-[<img src="project_documentation_files\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
+[<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
 
 # Notes
 
