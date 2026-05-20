@@ -96,3 +96,20 @@ stories:
   - user: "görüşürüz"
     intent: goodbye
   - action: utter_goodbye
+
+- story: Handle out of scope request
+  steps:
+  - user: "Bana pizza sipariş et"
+    intent: out_of_scope
+  - action: utter_out_of_scope
+  - action: utter_ask
+
+- story: Handle chitchat and thank you
+  steps:
+  - user: "nasılsın"
+    intent: chitchat
+  - action: utter_chitchat
+  - action: utter_ask
+  - user: "çok teşekkürler"
+    intent: thank_you
+  - action: utter_noworries

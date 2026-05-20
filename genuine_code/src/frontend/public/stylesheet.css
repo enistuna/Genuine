@@ -1,0 +1,78 @@
+:root {
+  --stop-icon-animation: my-pulse 2s ease-in-out infinite;
+  --loading-cursor-animation: my-breathe 2s ease-in-out infinite;
+  --loading-cursor-size: 1.25rem;
+
+  --red: #b01f4e;
+  --blue: #5888f1;
+}
+
+body {
+  background: radial-gradient(circle at top left, rgba(88, 136, 241, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at bottom right, rgba(176, 31, 78, 0.1) 0%, transparent 60%),
+    #080808 !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+@keyframes my-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: scale(0.92);
+  }
+}
+
+@keyframes my-breathe {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+strong {
+  color: var(--red) !important;
+  font-weight: 600;
+}
+
+em {
+  color: var(--blue) !important;
+  font-style: normal;
+  font-weight: 600;
+}
+
+img[alt="Genuine Logo"] {
+  width: 400px !important;
+  max-width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 30px;
+  background-image: url('/public/logo_dark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 9999;
+  pointer-events: none;
+}

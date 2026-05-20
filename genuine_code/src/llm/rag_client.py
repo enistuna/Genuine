@@ -1,8 +1,6 @@
 import os, sys, requests, json, warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
-
-# - debug -
-import os
+os.environ["ANONYMIZED_TELEMETRY"] = "False"
 print(f"DEBUG: GEMINI_API_KEY present: {bool(os.getenv('GEMINI_API_KEY'))}")
 
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -10,16 +8,19 @@ if project_root not in sys.path:
     sys.path.append(project_root)
 
 try:
-    from langchain_community.document_loaders import TextLoader
+    from langchain_community.document_loaders import TextLoader, DirectoryLoader, PyPDFLoader, Docx2txtLoader
     from langchain_community.vectorstores import Chroma
     from langchain_community.embeddings import HuggingFaceEmbeddings
 except ImportError:
     try:
-        from langchain.document_loaders import TextLoader
+        from langchain.document_loaders import TextLoader, DirectoryLoader, PyPDFLoader, Docx2txtLoader
         from langchain.vectorstores import Chroma
         from langchain.embeddings import HuggingFaceEmbeddings
     except ImportError:
         TextLoader = None
+        DirectoryLoader = None
+        PyPDFLoader = None
+        Docx2txtLoader = None
         Chroma = None
         HuggingFaceEmbeddings = None
 
@@ -38,17 +39,17 @@ class RealRAGEngine:
         except Exception as e:
             logger.error(f"Failed to load config: {e}. Using defaults.")
             self.config = {
-                "model_name": "gemini-pro",
+                "model_name": "gemini-2.0-flash",
                 "embeddings_model": "sentence-transformers/all-MiniLM-L6-v2",
                 "persist_dir": "./data/chroma",
                 "collection_name": "genuine_docs",
-                "kb_path": "./data/bank_policies.txt",
+                "kb_dir": "./data/knowledge_base",
                 "chunk_size": 1000,
                 "chunk_overlap": 200
             }
 
-        self.kb_path = self.config.get('kb_path', './data/bank_policies.txt')
-        os.makedirs(os.path.dirname(self.kb_path), exist_ok=True)
+        self.kb_dir = self.config.get('kb_dir', './data/knowledge_base')
+        os.makedirs(self.kb_dir, exist_ok=True)
         
         self.mock_mode = False
         if not (TextLoader and Chroma and HuggingFaceEmbeddings):
@@ -65,25 +66,34 @@ class RealRAGEngine:
 
         if not self.mock_mode:
             try:
-                self.generate_knowledge()
                 self.vector_store = self.initialize_vector_store()
             except Exception as e:
                 logger.error(f"Failed to init RAG: {e}. Switching to mock mode.")
                 self.mock_mode = True
 
-    def generate_knowledge(self):
-        """Generates a text file containing bank policies."""
-        text = get_bank_policy_text()
-        with open(self.kb_path, 'w', encoding='utf-8') as f:
-            f.write(text)
-
     def initialize_vector_store(self):
-        """Ingests the synthetic text into ChromaDB."""
-        if not os.path.exists(self.kb_path):
-            self.generate_knowledge()
-            
-        loader = TextLoader(self.kb_path, encoding='utf-8')
-        docs = loader.load()
+        """Ingests documents from the knowledge_base directory into ChromaDB."""
+        
+        docs = []
+        for file in os.listdir(self.kb_dir):
+            file_path = os.path.join(self.kb_dir, file)
+            if file.endswith('.txt') or file.endswith('.md'):
+                loader = TextLoader(file_path, encoding='utf-8')
+                docs.extend(loader.load())
+            elif file.endswith('.pdf') and PyPDFLoader:
+                loader = PyPDFLoader(file_path)
+                docs.extend(loader.load())
+            elif file.endswith('.docx') and Docx2txtLoader:
+                loader = Docx2txtLoader(file_path)
+                docs.extend(loader.load())
+        
+        if not docs:
+            fallback_path = os.path.join(self.kb_dir, "bank_policies.txt")
+            text = get_bank_policy_text()
+            with open(fallback_path, 'w', encoding='utf-8') as f:
+                f.write(text)
+            loader = TextLoader(fallback_path, encoding='utf-8')
+            docs.extend(loader.load())
         
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.config['chunk_size'], 
@@ -143,7 +153,7 @@ class RealRAGEngine:
             
             if response.status_code != 200:
                 logger.error(f"Gemini API Error {response.status_code}: {response.text}")
-                return "Üzgünüm, şu anda yapay zeka servisine erişemiyorum. (API Error)"
+                return "Üzgünüm, şu anda yapay zeka servisine erişemiyorum."
 
             result = response.json()
             try:

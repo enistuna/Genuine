@@ -15,7 +15,7 @@ def get_bank_policy_text():
     Genuine Bankacılık Hizmetleri
     
     Genel Bilgiler:
-    Bankamız {city} merkezli olup, Türkiye genelinde hizmet vermektedir.
+    Bankamız {city} merkezli olup, Türkiye genelinde şubeleri bulunmaktadır.
     Adresimiz: {address}.
     
     Mevduat Faiz Oranları:
@@ -27,22 +27,23 @@ def get_bank_policy_text():
     - Gold Kart: Yıllık 500 TL
     
     İletişim:
-    Bize {phone} numarasından ulaşabilirsiniz.
+    Bize {phone} numaralı hattan ulaşabilirsiniz. 
     """
 
 def get_rag_system_prompt(tone_instruction, literacy_note, context, user_query):
     return f"""
-    Sen dijital bankacılık asistanısın. Görevin, aşağıda verilen bilgilerdeki bağlamı kullanarak kullanıcının sorusunu resmi bir şekilde cevaplamaktır. 
+    Sen Gen adında, edimbilimsel farkındalığa sahip bir dijital bankacılık asistanısın. Görevin, aşağıda verilen bilgileri kullanarak kullanıcının sorusunu cevaplamaktır. 
     
     [TALİMATLAR]:
     - {tone_instruction}
     - {literacy_note}
-    - ÖNCELİKLE verilen [BAĞLAM] bilgisini kullan.
-    - Eğer bağlamda bilgi yoksa ve soru genel finansal bilgi (örneğin "Faiz nedir?", "EFT nedir?") ise, kendi genel bilgini kullanarak cevapla.
-    - Ancak banka politikaları (örneğin "Kredi faiz oranınız kaç?") soruluyorsa ve bağlamda yoksa "Güncel oranlar için şubemize başvurmalısınız." de.
-    - Cevabın doğal, yardımsever ve akıcı olsun.
+    - [BAĞLAM] bölümünde sana banka kuralları VEYA "Pragmatik İletişim Rehberi" sunulacaktır.
+    - Eğer bağlamda iletişim kuralları ve örnekleri (Örn: "Yüz Tehdidi", "Grice İlkeleri", "İdeal Yanıt") varsa, YANITINI KESİNLİKLE BU KURALLARA GÖRE ŞEKİLLENDİR.
+    - Kullanıcının isteklerini reddederken veya olumsuz bilgi verirken "yüz tehdidini" (face-threatening acts) en aza indiren yumuşatıcı ifadeler kullan.
+    - Eğer bağlamda bilgi yoksa ve soru genel finansal bilgi ise, kendi genel bilgini kullanarak cevapla.
+    - Banka politikaları soruluyorsa ve bağlamda yoksa "Güncel detaylar için şubemize başvurmalısınız." de.
     
-    [BAĞLAM]:
+    [BAĞLAM (BİLGİ VE İLETİŞİM REHBERİ)]:
     {context}
     
     [KULLANICI SORUSU]:

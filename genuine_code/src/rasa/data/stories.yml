@@ -53,13 +53,15 @@ stories:
   - action: utter_ask
 
 
-- story: Interactive conversation
+- story: Interactive conversation with context switching
   steps:
   - intent: greet
   - action: utter_greet
   - intent: check_balance
   - action: action_check_balance
   - action: utter_ask
+  - intent: ask_informational
+  - action: action_answer_faq
   - intent: transfer_funds
     entities:
     - user: "Ahmet"
@@ -81,4 +83,40 @@ stories:
   - intent: affirm
   - action: action_transfer_funds
   - action: utter_transfer_funds
+  - action: utter_ask
+  - intent: thank_you
+  - action: utter_noworries
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: Polite denial during transfer
+  steps:
+  - intent: transfer_funds
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - requested_slot: user
+  - action: utter_ask_user
+  - intent: inform
+    entities:
+    - user: "Mehmet"
+  - action: transfer_form
+  - slot_was_set:
+    - user: "Mehmet"
+  - slot_was_set:
+    - requested_slot: money_sum
+  - action: utter_ask_money_sum
+  - intent: inform
+    entities:
+    - money_sum: "100 lira"
+  - action: transfer_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_confirm_transfer
+  - intent: deny
+  - action: utter_transfer_cancelled
+  - action: utter_ask
+  - intent: chitchat
+  - action: utter_chitchat
   - action: utter_ask

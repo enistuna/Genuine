@@ -63,3 +63,13 @@ class UserProfile(Base):
     last_topic = Column(String)
 
     user = relationship("User", back_populates="profile")
+
+class Feedback(Base):
+    __tablename__ = "feedbacks"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    user_tckn = Column(String)
+    bot_message = Column(Text)
+    category = Column(String)
+    value = Column(Integer)
+    timestamp = Column(DateTime, default=datetime.utcnow)

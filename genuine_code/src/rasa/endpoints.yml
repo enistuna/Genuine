@@ -20,12 +20,8 @@ action_endpoint:
 
 tracker_store:
     type: sql
-    dialect: "postgresql"
-    url: "localhost"
-    db: "db"
-    username: "user"
-    password: "password"
-    port: 5432
+    dialect: "sqlite"
+    url: "sqlite:///data/genuine_rasa.db"
 
 #tracker_store:
 #    type: redis

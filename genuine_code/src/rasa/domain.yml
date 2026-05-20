@@ -13,6 +13,9 @@ intents:
   - inform
   - nlu_fallback
   - ask_informational
+  - thank_you
+  - chitchat
+  - out_of_scope
 
 responses:
   
@@ -21,55 +24,121 @@ responses:
   - text: "Merhabalar! Size hangi konularda yardımcı olmamı istersiniz?"
   - text: "Selamlar! Bugün finansal işlemlerinizde size nasıl destek olabilirim?"
   - text: "Hoş geldiniz! Ben Gen. Size nasıl yardımcı olabilirim?"
+  - text: "Selam! Finansal işlemlerinizde size nasıl yardımcı olabilirim?"
+  - text: "İyi günler! Bugün bankacılık işlemleriniz için buradayım."
 
   utter_goodbye:
   - text: "Görüşmek üzere, iyi günler!"
+  - text: "Hoşça kalın, size yardımcı olabildiğime sevindim!"
+  - text: "Hoşça kalın! Başka bir ihtiyacınız olursa buradayım."
   - text: "Tekrardan görüşmek dileğiyle!"
+  - text: "Görüşmek üzere!"
+  - text: "İyi günler dilerim!"
   - text: "Yardımcı olabileceğim başka bir konu yoksa iyi günler dilerim."
+  - text: "Kendinize iyi bakın!"
+  - text: "Başka bir isteğiniz olursa da buradayım, iyi günler!"
 
   utter_request_bot_info:
   - text: "Benim ismim Gen. Finansal işlemleriniz için geliştirilmiş dijital asistanınızım."
   - text: "Benim ismim Gen. Dijital bankacılıkta yanınızda bulunan takım arkadaşınızım."
   - text: "Benim ismim Gen. Herhangi bir bankacılık ihtiyacınızda danışabileceğiniz kişisel asistanınızım."
+  - text: "Benim ismim Gen. Size daha hızlı ve kolay bankacılık deneyimi sunmak için buradayım."
+  - text: "Benim ismim Gen. Bankacılık işlemlerinizi daha hızlı ve güvenli hale getirmek için buradayım."
 
   utter_ask_rephrase:
   - text: "Üzgünüm, ne istediğinizi anlayamadım. Farklı bir şekilde ifade edebilir misiniz?"
+  - text: "Özür dilerim, isteğinizi net olarak kavrayamadım. Lütfen başka sözcüklerle anlatır mısınız?"
   - text: "Dediğinizi tam olarak anlayamadım, lütfen yeniden ifade etmeyi deneyin."
+  - text: "Kusuruma bakmayın, tam olarak ne demek istediğinizi anlayamadım."
+  - text: "Anlamadım, tümceyi başka türlü kurar mısınız?"
+  - text: "Sanırım yanlış anladım, rica etsem tekrarlar mısınız?"
+
+  utter_noworries:
+  - text: "Rica ederim, size yardımcı olmak benim görevim!"
+  - text: "Ne demek, her zaman buradayım."
+  - text: "Ben teşekkür ederim, başka bir arzunuz var mı?"
+
+  utter_chitchat:
+  - text: "Teşekkür ederim, sistemlerim tıkır tıkır çalışıyor. Size bankacılık konusunda nasıl yardımcı olabilirim?"
+  - text: "Harikayım, umarım siz de öylesinizdir! Finansal işlemleriniz için buradayım."
+  - text: "Ben bir dijital bankacılık asistanıyım, günüm her zamanki gibi hesaplamalarla geçiyor. Size nasıl yardım edebilirim?"
+
+  utter_out_of_scope:
+  - text: "Bu konuda size yardımcı olamıyorum, benim uzmanlık alanım bankacılık ve finans. Finansal bir sorunuz varsa seve seve yanıtlarım."
+  - text: "İlgi çekici bir konu ancak maalesef benim bilgim yalnızca finansal işlemlerle sınırlı. Bankacılıkla ilgili başka bir sorunuz var mı?"
+  - text: "Üzgünüm, bu benim cevaplayabileceğim bir soru değil. Sadece bankacılık hizmetleri konusunda destek verebilirim."
 
   utter_ask:
   - text: "Başka hangi konuda yardım istersiniz?"
+  - text: "Size nasıl yardımcı olabilirim?"
   - text: "Size başka nasıl yardımcı olabilirim?"
+  - text: "Finansal işlemlerinizde size nasıl yardımcı olmaya devam edebilirim?"
+  - text: "Banka işlemlerinizde size nasıl destek olabilirim?"
   - text: "Yapmak veya sormak istediğiniz başka neler var?"
   - text: "Aklınıza takılan başka bir şey var mı?"
   - text: "Sıradaki işlemimiz ne olsun?"
+  - text: "Bana sormak veya yapmak istediğiniz bir şey var mı?"
+  - text: "Başka bir isteğiniz var mı?"
+  - text: "Devam etmek ister misiniz?"
 
   utter_check_balance:
   - text: "Hesabınızdaki güncel bakiye {balance} TL."
+  - text: "Mevcut bakiyeniz {balance} TL."
+  - text: "Hesabınızda bulunan toplam tutar {balance} TL."
+  - text: "Hesabınıza tanımlı hesap bakiyesi {balance} TL."
+  - text: "Hesabınıza tanımlı hesap bakiyesi {balance} TL."
+  - text: "Hesabınızda bulunan tutar {balance} TL."
 
   utter_check_accountNumber:
   - text: "Sisteme kayıtlı hesap numaranız: {account_number}"
+  - text: "Banka hesabınızın numarası {account_number}"
+  - text: "Hesap numaranız: {account_number}"
+  - text: "IBAN numaranız: {account_number}"
+  - text: "Hesabınıza tanımlı hesap numarası {account_number}"
+  - text: "Hesabınıza tanımlı IBAN {account_number}"
 
   utter_transfer_funds:
   - text: "{user} adlı kişiye {money_sum} tutarındaki para transferi işleminiz başarıyla tamamlanmıştır."
+  - text: "{user} hesabına {money_sum} gönderildi."
+  - text: "{user} kişisine {money_sum} transfer edildi."
+  - text: "{user} adlı kişiye {money_sum} tutarında para transferi gerçekleştirildi."
+  - text: "{user} kişisine {money_sum} transfer işleminiz başarıyla tamamlanmıştır."
+  - text: "{user} adlı kişiye {money_sum} tutarındaki para transferi işleminiz tamamlandı."
+  - text: "{user} kişisine {money_sum} transfer işleminiz başarıyla sonuçlandırıldı."
+  - text: "{user} adlı kişiye {money_sum} tutarındaki para transferi işleminiz başarıyla sonuçlandırıldı."
 
   utter_list_transactions:
   - text: "Gerçekleştirdiğiniz son işlemleriniz listeleniyor..."
+  - text: "Son işlemleriniz aşağıdadır:"
+  - text: "Hesabınızdaki son işlemler:"
+  - text: "Son İşlemleriniz:\n{transactions}"
 
   utter_ask_user:
   - text: "Elbette, kime para göndermek istersiniz?"
   - text: "Elbette, kime para göndermek istiyorsunuz?"
   - text: "Tabii ki de, kime para göndermek istersiniz?"
   - text: "Tabii ki de, kime para göndermek istiyorsunuz?"
+  - text: "Kime transfer yapmak istersiniz?"
+  - text: "Kime para transferi yapmak istiyorsunuz?"
+  - text: "Kime para göndermek istiyorsun?"
 
   utter_ask_money_sum:
   - text: "Peki, ne kadar para göndermek istersiniz?"
   - text: "Ne kadar para göndermek istersiniz?"
+  - text: "Peki, ne kadar para göndermek istiyorsunuz?"
+  - text: "Ne kadar para göndermek istiyorsunuz?"
 
   utter_confirm_transfer:
   - text: "{user} adlı kişiye {money_sum} göndermek üzeresiniz. Onaylıyor musunuz?"
+  - text: "{user} kişisine {money_sum} transfer etmek üzeresiniz. Onaylıyor musunuz?"
+  - text: "{user} kişisine {money_sum} tutarında para transferi gerçekleştirmek üzeresiniz. Onaylıyor musunuz?"
+  - text: "{user} adlı kişiye {money_sum} tutarındaki para transferi işleminizi gerçekleştirmek üzeresiniz. Onaylıyor musunuz?"
+
 
   utter_transfer_cancelled:
-  - text: "İşlem iptal edildi."
+  - text: "İsteğiniz üzerine işlemi iptal ettim. Endişelenmeyin, hesabınızdan herhangi bir bakiye düşüşü olmadı."
+  - text: "Para transferi işlemi güvenle iptal edildi. Bakiye güvende."
+  - text: "Anladım, transfer işlemini iptal ettim."
 
 actions:
   - action_check_balance

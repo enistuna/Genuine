@@ -157,7 +157,7 @@ def transfer_funds(request: schemas.TransferRequest, db: Session = Depends(get_d
     logger.info(f"Transfer successful: {sender.tckn} -> {recipient.tckn} Amount: {request.amount}")
 
     return {
-        "mesaj": "Transfer işlemi başarıyla gerçekleşti", 
+        "mesaj": "Transfer işlemi başarıyla gerçekleşti.", 
         "yeni_bakiye": float(sender_acc.balance)
     }
 
@@ -214,7 +214,7 @@ def log_interaction(user_id: int, body: dict, db: Session = Depends(get_db)):
 
     profile = db.query(UserProfile).filter(UserProfile.user_id == user_id).first()
     if not profile:
-        return {"status": "error", "detail": "Profil bulunamadı"}
+        return {"status": "error", "detail": "Profil bulunamadı."}
         
     profile.interaction_count += 1
     
@@ -227,3 +227,15 @@ def log_interaction(user_id: int, body: dict, db: Session = Depends(get_db)):
         
     db.commit()
     return {"status": "updated", "profile": get_user_profile(user_id, db)}
+
+@app.post("/log_feedback")
+def log_feedback(feedback: schemas.FeedbackCreate, db: Session = Depends(get_db)):
+    new_feedback = models.Feedback(
+        user_tckn=feedback.user_id,
+        bot_message=feedback.bot_message,
+        category=feedback.category,
+        value=feedback.value
+    )
+    db.add(new_feedback)
+    db.commit()
+    return {"status": "success"}

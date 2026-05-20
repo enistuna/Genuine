@@ -61,3 +61,9 @@ class UserResponse(UserBase):
     user_id: int
     balance: Decimal
     profile: Optional[UserProfileBase] = None
+
+class FeedbackCreate(BaseModel):
+    user_id: Optional[str] = None
+    bot_message: str
+    category: str
+    value: int

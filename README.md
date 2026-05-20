@@ -1,9 +1,6 @@
 <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
 
-# Gənuine - Enchanced AI Fintech Chatbot
-**A Turkish Fintech Conversational AI that blends Rule-Based systems with GenAI**
-
-### **ON-GOING PROJECT**
+# Gənuine: Pragmatical AI Fintech Chatbot
 
 # Overview
 *   [Explanation of The Project](#explanation-of-the-project)
@@ -38,5 +35,5 @@
 
 # Notes
 
-* This project is the successor of [Finchat](https://github.com/enistuna/Finchat) project. I published my bachelors graduation [thesis paper]() on comparative analysis of the two project's pragmatic competancy.
+* This project is the successor of [Finchat](https://github.com/enistuna/Finchat) project. I wrote my Bachelor's [thesis paper]() on how improving chatbot's pragmatic competancy will lead to better user experience through the lens of this project.
 * For any question, contribution or inquiry, [send me an email](mailto:enissstuna@gmail.com).

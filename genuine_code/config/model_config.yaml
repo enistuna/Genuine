@@ -3,6 +3,6 @@ rag:
   embeddings_model: "sentence-transformers/all-MiniLM-L6-v2"
   persist_dir: "./data/chroma"
   collection_name: "genuine_docs"
-  kb_path: "./data/bank_policies.txt"
+  kb_dir: "./data/knowledge_base"
   chunk_size: 1000
   chunk_overlap: 200

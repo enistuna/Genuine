@@ -8,6 +8,8 @@ nlu:
     - Selam
     - Selamlar
     - Nasılsın
+    - Nasılsınız
+    - Nabersin
     - Naber
     - Günaydın
     - İyi akşamlar
@@ -15,14 +17,19 @@ nlu:
     - Slm
     - Hey
     - Esenlikler
+    - Selamın aleyküm
+
 
 - intent: goodbye
   examples: |
     - görüşmek üzere
     - görüşürüz
     - bye
+    - bye bye
     - bay bay
     - hoşçakal
+    - hoşçakalın
+    - kendine iyi bak
     - iyi günler
     - iyi geceler
 
@@ -31,37 +38,50 @@ nlu:
     - aynen
     - doğru
     - evet
+    - evet diyorum
     - tabi
     - tabiki
     - kesinlikle
     - yes
     - onayla
+    - onaylıyorum
 
 - intent: deny
   examples: |
     - yanlış
     - hayır
+    - hayır diyorum
     - asla
+    - hayır vazgeçtim
     - pek değil
     - değiştir
     - bence değil
+    - yanlış anladın
     - doğru değil
+    - hayır onaylamıyorum
     - no
     - vazgeç
+    - vazgeçtim
 
 - intent: inform
   examples: |
     - [Enis Tuna](user)
+    - [Ahmet](user)
     - [Ahmet Yılmaz](user)
     - [Ayşe](user)
     - [50 TL](money_sum)
+    - [yüz lira](money_sum)
     - [bin lira](money_sum)
     - [1000 TL](money_sum)
+    - [200 TL](money_sum)
     - evet [Enis](user)
     - "[1234567890]"(account_number)
     - hesap no [0987654321](account_number)
+    - [1234-567890-12](account_number) nolu hesap
     - [1234-567890-12](account_number) nolu hesaba
     - hesap numaram [5555-112233-99](account_number)
+    - hesabımda [1000 TL](money_sum) var
+    - [100] [Ayşe](user)
 
 - intent: request_bot_info
   examples: |
@@ -69,7 +89,9 @@ nlu:
     - ne botusun?
     - nasıl bir chatbotsun?
     - ismin nedir?
+    - senin adın ne?
     - kim olduğunu öğrenebilir miyim?
+    - kimsin
     - nasıl bir bot olduğunu öğrenebilir miyim?
     - kiminle konuşuyorum?
     - kendini açıklayabilir misin?
@@ -77,30 +99,51 @@ nlu:
     - kendini anlat
     - asistan mısın?
     - hangi asistansın?
+    - hangi asistansın sen?
     - hangi asistanla konuşuyorum?
 
 - intent: check_balance
   examples: |
     - hesabıma bakar mısın?
+    - hesabımda ne var?
     - ne kadar param var?
     - kaç param var?
     - bakiyem ne kadar?
+    - bakiye ne kadar?
     - güncel bakiye
+    - güncel bakiyem ne kadar?
     - bana bakiyemi söyle
+    - para miktarımı söyle
     - paramı göster
     - hesapta ne var?
     - bakiyeyi kontrol et
+    - bakiyemi kontrol eder misin?
     - bakiyeme bakar mısın?
     - hesabımda ne kadar param var?
     - birikimim ne kadar?
     - birikimime bakar mısın?
     - paramı öğrenmek istiyorum
+    - birikimime bakalım
+    - birikimlerime bakar mısın?
+    - birikimlerimi gösterebilir misin?
+    - birikimlerimi kontrol edebilir misin?
+    - birikimlerimi kontrol etmek istiyorum
+    - birikimlerimi öğrenmek istiyorum
+    - birikimlerimi görmek istiyorum
+    - birikimlerimi gösterebilir misin?
+    - birikimlerimi kontrol edebilir misin?
+    - birikimlerimi kontrol etmek istiyorum
+    - birikimlerimi öğrenmek istiyorum
+    - birikimlerimi görmek istiyorum
 
 - intent: check_accountNumber
   examples: |
-    - hesap numarama bakar mısın
-    - hesap numaram ne
-    - hesap numaram nedir
+    - hesap numarama bakar mısın?
+    - hesap numaramı gösterebilir misin?
+    - hesap numaram ne?
+    - hesap numaramı söyleyebilir misin?
+    - hesap numaram nedir?
+    - hesap numaramı kontrol eder misin?
     - numarammı öğrenebilir miyim?
     - numaramı söyle
     - numaramı öğrenmek istiyorum
@@ -108,13 +151,32 @@ nlu:
     - hesap numaramı göster
     - hesap numaramı gösterebilir misin?
     - iban numaramı unuttum
+    - iban numaramı kontrol eder misin?
     - ibanım neydi
+    - iban numaramı öğrenebilir miyim?
+    - iban numaramı söyleyebilir misin?
+    - hesap numaramı öğrenmek istiyorum
+    - hesap numaram nedir
+    - hesap numaramı gösterebilir misin
+    - hesap numaramı kontrol eder misin
+    - hesap numaramı kontrol eder misin?
+    - hesap numaramı kontrol etmek istiyorum
 
 - intent: transfer_funds
   examples: |
     - para yollayabilir misin
+    - para yollamak istiyorum
     - para yolla
+    - para transferi yapmak istiyorum
+    - para transferi yap
+    - para transferi yapabilir misin?
+    - para transferi yapabilir miyim?
+    - para transferi yapsana
     - [Ayşe](user)'ye [50 TL](money_sum) gönder
+    - para gönder
+    - para göndermek istiyorum
+    - para gönderir misin?
+    - para gönderir misin?
     - [Mehmet](user) adlı kişiye [100 lira](money_sum) yollar mısın?
     - hesabımdan [Veli](user)'ye [250 TL](money_sum) aktar
     - [Fatma](user) için [500 TL](money_sum)
@@ -123,43 +185,86 @@ nlu:
     - birine para yollayacağım
     - [Zeynep](user)'e [1000 TL](money_sum) yolla
     - [Mustafa](user) için [on beş euro](money_sum)
+    - [Mustafa](user) için [yüz yirmi beş tl](money_sum)
+    - [Mustafa](user) için [yüz yirmi beş tl](money_sum) yolla
     - ücreti yolla
     - havale yap
     - para göndermem lazım
     - [Ayşe](user) ye para aktar
+    - para aktar
 
 - intent: list_transactions
   examples: |
     - işlemleri gösterebilir misin
+    - son işlemleri gösterebilir misin
     - işlemleri göster
+    - para transferlerini gösterebilir misin
     - yollanan paraları gösterebilir misin?
+    - gönderdiğim paraları gösterebilir misin?
     - son işlemlerim neler
     - para transferlerimi listele
+    - hesap hareketlerini gösterebilir misin?
     - harcamalarımı göster
+    - son hesap hareketlerim
     - son aktivitelerim
+    - son işlemlerimi göster
     - hesap dökümü
+    - hesap işlemlerini listele
     - son yaptığım işlemleri listele
+    - son yaptığım harcamaları listele
     - hesap işlemlerini göstermeni istiyorum
+    - hesap işlemlerini listelemek istiyorum
     - işlemlerimi görmek istiyorum
     - işlemlerimi öğrenmek istiyorum
+    - son işlemim neydi?
+    - en son ne yaptım?
+    - para çıkışlarını gösterebilir misin?
+    - para girişlerini gösterebilir misin?
+    - havale listesi
+    - eft listesi
+    - son havalelerim
+    - son eftlerim
+    - son para transferlerim
+    - son para hareketlerim
+    - son gönderdiğim paralar
+    - son gelen paralar
+    - para hareketlerini gösterebilir misin
+    - hesap hareketlerini listeleyebilir misin
+    - hesap hareketleri
+    - hesap dökümü
+    - hesap ekstresi
+    - ekstre
+    - hesap dökümü görebilir miyim?
+    - hesap hareketlerimi görebilir miyim?
+    - hesap işlemlerini görebilir miyim?
+    - hesap işlemlerini listeleyebilir misin?
+    - hesap işlemlerini listeleyebilir misin?
+    - hesap işlemlerini listeleyebilir misin?
+    - hesap hareketlerimi listeleyebilir misin?
 
 
 - intent: ask_informational
   examples: |
     - Kredi kartı aidatı ne kadar?
+    - Kredi kartı aidatı
     - Faiz oranları nedir?
+    - Faiz oranları
     - Mevduat faizi kaç?
+    - Mevduat faizi
     - Şifremi nasıl korurum?
     - Güvenlik prosedürleri
     - Genel müdürlük adresi nerede?
+    - Genel müdürlük adresi
     - Müşteri hizmetlerine nasıl ulaşırım?
+    - Müşteri hizmetlerine nasıl ulaşabilirim
     - Altın hesabı açabilir miyim?
     - Yatırım tavsiyesi ver
     - Bankacılık hakkında bilgi verebilir misin?
     - Bankacılık nedir?
+    - Bankacılık hakkında bilgi
     - Sistem hakkında bilgi ver
+    - Sistem hakkında bilgi
     - Ne yapabilirsin?
-    - Bireysel Emeklilik Sistemi nedir?
     - Bireysel Emeklilik Sistemi nedir?
     - BES nedir?
     - Havale ile EFT arasında ne fark var?
@@ -173,13 +278,64 @@ nlu:
     - Banka kartı ile kredi kartı farkı
     - Swift kodu nedir?
     - İban nedir?
+    - Kredi kartı borcumu nasıl öderim?
+    - Kredi kartı borcumu nasıl ödeyebilirim?
+    - Kredi kartı borcumu ödemek istiyorum
+    - Kredi kartı borcumu nasıl kapatabilirim?
+    - Kredi kartı borcumu nasıl düşürebilirim?
+    - Kredi kartı borcumu nasıl yapılandırabilirim?
+    - Kredi kartı borcumu nasıl azaltabilirim?
+    - Kredi kartı borcumu nasıl ödeyebilirim?
 
 - synonym: kredi
   examples: |
     - kredi kartı hesabı
     - kredi hesabı
     - kredi kartı
+    - kredi kartı borcu
 
 - regex: account_number
   examples: |
     - \d{10,12}
+
+- intent: thank_you
+  examples: |
+    - Teşekkürler
+    - Teşekkür ederim
+    - Sağol
+    - Çok sağol
+    - Eline sağlık
+    - Harikasın
+    - Teşekkür ediyorum
+    - Çok teşekkürler
+    - Mükemmel
+
+- intent: chitchat
+  examples: |
+    - Ne yapıyorsun?
+    - Nasılsın?
+    - Hayat nasıl gidiyor?
+    - Bugün nasılsın?
+    - İyi misin?
+    - Robot musun?
+    - İnsan mısın?
+    - Yaşın kaç?
+    - Nerede yaşıyorsun?
+    - Seni kim yaptı?
+    - Keyifler nasıl?
+    - Ne haber?
+
+- intent: out_of_scope
+  examples: |
+    - Hava durumu nasıl?
+    - Bugün yağmur yağacak mı?
+    - Bana pizza sipariş et
+    - Acıktım
+    - Şarkı söyle
+    - Fıkra anlat
+    - Oyun oynayalım mı?
+    - Film önerir misin?
+    - Maç kaç kaç bitti?
+    - Tuttuğun takım hangisi?
+    - Seçimleri kim kazanır?
+    - Akşam yemeğinde ne yiyeyim?
