@@ -57,6 +57,7 @@
 
 * This project is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. I wrote my Bachelor's **[thesis paper](https://github.com/enistuna/Genuine) (coming soon...)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this project.
 * As of May 2026, ***Gənuine v1.0*** is finished being developed. This project will likely get an update in the foreseeable future as it was granted TÜBİTAK's 2209-A program's support. Think of ***Gənuine v1.0*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous in the future. I will be keeping everyone in the loop by releasing more version notes.
+* If you want to conveniently test ***Gənuine v1.0*** for yourself, you can also access the chatbot in **[Gənuine's Hugging Face Spaces page](https://huggingface.co/spaces/enistuna/Genuine)**.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 <details>
