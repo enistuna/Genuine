@@ -25,7 +25,8 @@ except ImportError:
         HuggingFaceEmbeddings = None
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from src.prompt_engineering.templates import get_bank_policy_text, get_rag_system_prompt
+from langchain.schema import Document
+from src.prompt_engineering.templates import get_bank_policy_text, get_rag_system_prompt, get_grammar_guardrails
 from src.utils.logger import setup_logger
 from src.utils.config import load_config
 
@@ -67,6 +68,7 @@ class RealRAGEngine:
         if not self.mock_mode:
             try:
                 self.vector_store = self.initialize_vector_store()
+                self.implicature_store = self.initialize_implicature_store()
             except Exception as e:
                 logger.error(f"Failed to init RAG: {e}. Switching to mock mode.")
                 self.mock_mode = True
@@ -74,6 +76,14 @@ class RealRAGEngine:
     def initialize_vector_store(self):
         """Ingests documents from the knowledge_base directory into ChromaDB."""
         
+        embeddings = HuggingFaceEmbeddings(model_name=self.config['embeddings_model'])
+        store = Chroma(persist_directory=self.config['persist_dir'], embedding_function=embeddings, collection_name=self.config['collection_name'])
+        
+        if store._collection.count() > 0:
+            logger.info("Found existing genuine_docs ChromaDB collection. Skipping re-ingestion.")
+            return store
+            
+        logger.info("Ingesting Knowledge Base documents into ChromaDB...")
         docs = []
         for file in os.listdir(self.kb_dir):
             file_path = os.path.join(self.kb_dir, file)
@@ -101,13 +111,45 @@ class RealRAGEngine:
         )
         splits = splitter.split_documents(docs)
         
+        store.add_documents(splits)
+        return store
+
+    def initialize_implicature_store(self):
+        """Ingests implicature data into a separate ChromaDB collection."""
         embeddings = HuggingFaceEmbeddings(model_name=self.config['embeddings_model'])
+        implicature_persist_dir = os.path.join(self.config['persist_dir'], "implicature")
         
-        return Chroma.from_documents(
-            splits, 
-            embeddings, 
-            persist_directory=self.config['persist_dir']
-        )
+        store = Chroma(persist_directory=implicature_persist_dir, embedding_function=embeddings, collection_name="implicature_examples")
+        
+        if store._collection.count() > 0:
+            return store
+            
+        dataset_path = os.path.join(project_root, 'data', 'datasets', 'grice_implicature_data.jsonl')
+        if not os.path.exists(dataset_path):
+            return store
+            
+        logger.info("Ingesting Grice Implicature dataset. This may take a moment...")
+        docs = []
+        try:
+            with open(dataset_path, 'r', encoding='utf-8') as f:
+                for i, line in enumerate(f):
+                    if i >= 500:
+                        break
+                    data = json.loads(line)
+                    if 'dialog' in data:
+                        for turn in data['dialog']:
+                            q = turn.get('question', '')
+                            a = turn.get('answer', '')
+                            ea = turn.get('explict_answer', '')
+                            content = f"Context Question: {q}\nIndirect Answer: {a}\nExplicit Meaning (Implicature): {ea}"
+                            docs.append(Document(page_content=content))
+        except Exception as e:
+            logger.error(f"Failed to read Grice data: {e}")
+            
+        if docs:
+            store.add_documents(docs)
+            
+        return store
 
     def query(self, user_query, user_profile=None):
         """Retrieves context and asks Gemini to generate an answer."""
@@ -135,7 +177,24 @@ class RealRAGEngine:
             elif literacy_score > 80:
                 literacy_note = "Kullanıcı finansal konularda uzman. Teknik detaylara girebilirsin."
 
-        system_prompt = get_rag_system_prompt(tone_instruction, literacy_note, context, user_query)
+        implicature_context = ""
+        if not self.mock_mode and hasattr(self, 'implicature_store') and self.implicature_store:
+            try:
+                imp_docs = self.implicature_store.similarity_search(user_query, k=2)
+                implicature_context = "\n\n".join([d.page_content for d in imp_docs])
+            except Exception as e:
+                logger.error(f"Implicature retrieval failed: {e}")
+                
+        grammar_guardrails = get_grammar_guardrails()
+
+        system_prompt = get_rag_system_prompt(
+            tone_instruction, 
+            literacy_note, 
+            context, 
+            user_query,
+            implicature_context=implicature_context,
+            grammar_guardrails=grammar_guardrails
+        )
         
         if not self.api_key:
             return f"[MOCK LLM RESPONSE]: (Gemini Key Missing)\n\n{system_prompt}"

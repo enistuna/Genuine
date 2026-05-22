@@ -120,3 +120,11 @@ stories:
   - intent: chitchat
   - action: utter_chitchat
   - action: utter_ask
+
+- story: Polite out of scope handling
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+  - action: utter_ask
+  - intent: ask_informational
+  - action: action_answer_faq

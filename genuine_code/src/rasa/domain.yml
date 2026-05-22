@@ -23,7 +23,7 @@ responses:
   - text: "Merhabalar! Size nasıl yardımcı olabilirim?"
   - text: "Merhabalar! Size hangi konularda yardımcı olmamı istersiniz?"
   - text: "Selamlar! Bugün finansal işlemlerinizde size nasıl destek olabilirim?"
-  - text: "Hoş geldiniz! Ben Gen. Size nasıl yardımcı olabilirim?"
+  - text: "Hoş geldiniz! Ben Gən. Size nasıl yardımcı olabilirim?"
   - text: "Selam! Finansal işlemlerinizde size nasıl yardımcı olabilirim?"
   - text: "İyi günler! Bugün bankacılık işlemleriniz için buradayım."
 
@@ -39,19 +39,18 @@ responses:
   - text: "Başka bir isteğiniz olursa da buradayım, iyi günler!"
 
   utter_request_bot_info:
-  - text: "Benim ismim Gen. Finansal işlemleriniz için geliştirilmiş dijital asistanınızım."
-  - text: "Benim ismim Gen. Dijital bankacılıkta yanınızda bulunan takım arkadaşınızım."
-  - text: "Benim ismim Gen. Herhangi bir bankacılık ihtiyacınızda danışabileceğiniz kişisel asistanınızım."
-  - text: "Benim ismim Gen. Size daha hızlı ve kolay bankacılık deneyimi sunmak için buradayım."
-  - text: "Benim ismim Gen. Bankacılık işlemlerinizi daha hızlı ve güvenli hale getirmek için buradayım."
+  - text: "Benim ismim Gən. Finansal işlemleriniz için geliştirilmiş dijital asistanınızım."
+  - text: "Benim ismim Gən. Dijital bankacılıkta yanınızda bulunan takım arkadaşınızım."
+  - text: "Benim ismim Gən. Herhangi bir bankacılık ihtiyacınızda danışabileceğiniz kişisel asistanınızım."
+  - text: "Benim ismim Gən. Size daha hızlı ve kolay bankacılık deneyimi sunmak için buradayım."
+  - text: "Benim ismim Gən. Bankacılık işlemlerinizi daha hızlı ve güvenli hale getirmek için buradayım."
+  - text: "Benim ismim Gənuine. Ama siz bana kısaca Gən diyebilirsiniz."
 
   utter_ask_rephrase:
-  - text: "Üzgünüm, ne istediğinizi anlayamadım. Farklı bir şekilde ifade edebilir misiniz?"
-  - text: "Özür dilerim, isteğinizi net olarak kavrayamadım. Lütfen başka sözcüklerle anlatır mısınız?"
-  - text: "Dediğinizi tam olarak anlayamadım, lütfen yeniden ifade etmeyi deneyin."
-  - text: "Kusuruma bakmayın, tam olarak ne demek istediğinizi anlayamadım."
-  - text: "Anlamadım, tümceyi başka türlü kurar mısınız?"
-  - text: "Sanırım yanlış anladım, rica etsem tekrarlar mısınız?"
+  - text: "Üzgünüm, sanırım tam olarak ne demek istediğinizi anlayamadım. Rica etsem farklı bir şekilde ifade edebilir misiniz?"
+  - text: "Kusura bakmayın, isteğinizi net olarak kavrayamadım. Lütfen başka sözcüklerle anlatmanız mümkün mü?"
+  - text: "Dediğinizi tam olarak anlayamadım, size daha iyi yardımcı olabilmem için lütfen yeniden ifade etmeyi dener misiniz?"
+  - text: "Afedersiniz, tam olarak ne demek istediğinizi çözemedim. Biraz daha açabilir misiniz?"
 
   utter_noworries:
   - text: "Rica ederim, size yardımcı olmak benim görevim!"
@@ -64,9 +63,13 @@ responses:
   - text: "Ben bir dijital bankacılık asistanıyım, günüm her zamanki gibi hesaplamalarla geçiyor. Size nasıl yardım edebilirim?"
 
   utter_out_of_scope:
-  - text: "Bu konuda size yardımcı olamıyorum, benim uzmanlık alanım bankacılık ve finans. Finansal bir sorunuz varsa seve seve yanıtlarım."
-  - text: "İlgi çekici bir konu ancak maalesef benim bilgim yalnızca finansal işlemlerle sınırlı. Bankacılıkla ilgili başka bir sorunuz var mı?"
-  - text: "Üzgünüm, bu benim cevaplayabileceğim bir soru değil. Sadece bankacılık hizmetleri konusunda destek verebilirim."
+  - text: "Bu oldukça ilgi çekici bir konu; ancak benim uzmanlık alanım finansal işlemlerle sınırlı. Size bankacılık konusunda destek olmaktan memnuniyet duyarım."
+  - text: "Keşke bu konuda da size yardımcı olabilseydim! Fakat benim bilgim yalnızca bankacılık hizmetlerini kapsıyor. Finansal bir sorunuz olursa buradayım."
+  - text: "Maalesef bu isteğinizi yerine getiremiyorum. Sadece bankacılık işlemleri ve finansal konularda yardımcı olmak üzere tasarlandım. Başka bir bankacılık işlemi yapmak ister misiniz?"
+
+  utter_acknowledge_hedge:
+  - text: "Hiç sorun değil, emin olmamanız çok doğal. Birlikte kontrol edelim."
+  - text: "Endişelenmeyin, ben buradayım. Detaylara birlikte bakalım."
 
   utter_ask:
   - text: "Başka hangi konuda yardım istersiniz?"
@@ -136,9 +139,9 @@ responses:
 
 
   utter_transfer_cancelled:
-  - text: "İsteğiniz üzerine işlemi iptal ettim. Endişelenmeyin, hesabınızdan herhangi bir bakiye düşüşü olmadı."
-  - text: "Para transferi işlemi güvenle iptal edildi. Bakiye güvende."
-  - text: "Anladım, transfer işlemini iptal ettim."
+  - text: "İsteğiniz üzerine işlemi hemen iptal ettim. Endişelenmeyin, hesabınızdan herhangi bir tutar düşmedi."
+  - text: "Para transferi işlemi güvenle iptal edildi. Hiçbir sorun yok, bakiyeniz güvende. Başka nasıl yardımcı olabilirim?"
+  - text: "Anladım, transfer işlemini durdurdum. İşlem gerçekleşmedi."
 
 actions:
   - action_check_balance

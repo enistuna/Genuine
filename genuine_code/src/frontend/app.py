@@ -1,6 +1,7 @@
 import chainlit as cl
 import requests
 import os
+import asyncio
 
 RASA_URL = os.getenv("RASA_URL", "http://localhost:5005")
 FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8001")
@@ -8,9 +9,9 @@ FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8001")
 
 @cl.on_chat_start
 async def start():
-    welcome_text = """## Genuine'a Hoşgeldiniz
+    welcome_text = """## Gənuine'a Hoşgeldiniz
 
-Benim ismim **Gen**, açık, empatik ve etkili finansal destek sağlamak için tasarlanmış edimbilimsel farkındalığa sahip dijital bankacılık asistanınızım.
+Benim ismim **Gən**, açık, empatik ve etkili finansal destek sağlamak için tasarlanmış edimbilimsel farkındalığa sahip dijital bankacılık asistanınızım.
 
 Bana şu konularda danışabilirsiniz:
 - Başka bir hesaba **para transferi** yapmak.
@@ -23,34 +24,54 @@ Bana şu konularda danışabilirsiniz:
 
 @cl.on_message
 async def main(message: cl.Message):
+    loop = asyncio.get_event_loop()
+    user_id = cl.user_session.get("id")
+    msg_content = message.content
+    
+    request_task = loop.run_in_executor(None, lambda: requests.post(
+        f"{RASA_URL}/webhooks/rest/webhook",
+        json={"sender": user_id, "message": msg_content}
+    ))
+    
+    done, pending = await asyncio.wait([request_task], timeout=1.5)
+    
+    loading_msg = None
+    if not done:
+        loading_msg = cl.Message(content="*Yanıtınız hazırlanıyor...* ⏳")
+        await loading_msg.send()
+        
+        await request_task
+
     try:
-        response = requests.post(
-            f"{RASA_URL}/webhooks/rest/webhook",
-            json={"sender": cl.user_session.get("id"), "message": message.content}
-        )
+        response = request_task.result()
         response.raise_for_status()
         rasa_responses = response.json()
-
-        if not rasa_responses:
-            await cl.Message(content="Üzgünüm, şu an sistemsel bir hatadan dolayıyanıt veremiyorum.").send()
-        else:
-            for response in rasa_responses:
-                elements = []
-                if "image" in response:
-                    elements.append(cl.Image(url=response["image"], name="image", display="inline"))
-                
-                content = response.get("text", "")
-                
-                trunc_msg = content[:200].replace("|", " ")
-                actions = [
-                    cl.Action(name="toggle_feedback", payload={"value": trunc_msg}, label="💬 Geri Bildirim")
-                ]
-                
-                await cl.Message(content=content, elements=elements, actions=actions).send()
-    
     except requests.exceptions.RequestException as e:
         print(f"Rasa connection error: {e}")
+        if loading_msg:
+            await loading_msg.remove()
         await cl.Message(content="Rasa sunucusuna ulaşılamıyor. Lütfen sistem yöneticinizle iletişime geçin.").send()
+        return
+
+    if loading_msg:
+        await loading_msg.remove()
+
+    if not rasa_responses:
+        await cl.Message(content="Üzgünüm, şu an sistemsel bir hatadan dolayı yanıt veremiyorum.").send()
+    else:
+        for r in rasa_responses:
+            elements = []
+            if "image" in r:
+                elements.append(cl.Image(url=r["image"], name="image", display="inline"))
+            
+            content = r.get("text", "")
+            
+            trunc_msg = content[:200].replace("|", " ")
+            actions = [
+                cl.Action(name="toggle_feedback", payload={"value": trunc_msg}, label="💬 Geri Bildirim")
+            ]
+            
+            await cl.Message(content=content, elements=elements, actions=actions).send()
 
 @cl.action_callback("toggle_feedback")
 async def on_toggle_feedback(action):

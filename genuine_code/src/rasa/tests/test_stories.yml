@@ -113,3 +113,24 @@ stories:
   - user: "çok teşekkürler"
     intent: thank_you
   - action: utter_noworries
+
+- story: Handle indirect transfer request (Pragmatics test)
+  steps:
+  - user: "Acaba Ayşe'ye 50 TL göndermem mümkün mü?"
+    intent: transfer_funds
+    entities:
+    - user: "Ayşe"
+    - money_sum: "50 TL"
+  - action: transfer_form
+  - active_loop: transfer_form
+  - slot_was_set:
+    - user: "Ayşe"
+  - slot_was_set:
+    - money_sum: "50 TL"
+  - active_loop: null
+  - action: utter_confirm_transfer
+  - user: "onaylıyorum"
+    intent: affirm
+  - action: action_transfer_funds
+  - action: utter_transfer_funds
+  - action: utter_ask

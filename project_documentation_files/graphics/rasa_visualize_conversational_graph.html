@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Rasa Core Visualisation</title>
+    <script src="https://dagrejs.github.io/project/dagre-d3/latest/dagre-d3.min.js"></script>
+    <script src="https://dagrejs.github.io/project/dagre/latest/dagre.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+    <script src="https://dagrejs.github.io/project/graphlib-dot/v0.6.3/graphlib-dot.js"></script>
+</head>
+<body>
+<div id="errormsg" style="color: #b00"></div>
+<svg>
+    <style id="graph-style">
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
+        .node.invisible > rect {
+            display: none;
+        }
+
+        .node.start > rect {
+            fill: #9abaff;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node.end > rect {
+            fill: #ff4b84;
+            rx: 30;
+            ry: 18;
+        }
+
+        .node:not(.active) > rect, .node:not(.active) > .label {
+            opacity: 0.4;
+        }
+
+        .edgePath:not(.active) path {
+            opacity: 0.4;
+        }
+
+        .node.ellipsis > rect {
+            fill: #CCC;
+        }
+
+        .node.intent > rect {
+            fill: #BDCBD9;
+        }
+
+        .node.dashed > rect {
+            stroke-dasharray: 5;
+        }
+
+        text {
+            font-weight: 400;
+            font-family: "Roboto Mono", monospace;
+            font-size: 12px;
+            color: #000000;
+        }
+
+        .node rect {
+            stroke: #5888f1;
+            fill: #fff;
+            stroke-width: 1.5px;
+        }
+
+        .edgePath path {
+            stroke: #242424;
+            stroke-width: 1px;
+        }
+
+        svg {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+    <g></g>
+</svg>
+<script>
+
+  function serveGraph() {
+    let oldInputGraphValue;
+
+    const url = 'visualization.dot';
+    const refreshInterval = 500;
+
+    setInterval(function () {
+      fetch(url).then(r => r.text()).then(dot => {
+        document.getElementById('errormsg').innerHTML = '';
+        if (oldInputGraphValue === dot) return;
+
+        oldInputGraphValue = dot;
+        drawGraph(dot);
+      }).catch(err => {
+        document.getElementById('errormsg').innerHTML =
+          'Failed to update plot. (' + err.message + ')';
+      });
+    }, refreshInterval);
+  }
+
+  function drawGraph(graph) {
+    let g = graphlibDot.read(graph);
+    if (!g.graph().hasOwnProperty("marginx") &&
+      !g.graph().hasOwnProperty("marginy")) {
+      g.graph().marginx = 1;
+      g.graph().marginy = 1;
+    }
+    g.graph().nodesep = 4;
+    g.graph().ranksep = 4;
+    g.graph().transition = function (selection) {
+      return selection.transition().duration(300);
+    };
+    d3.select("svg g").call(render, g);
+  }
+  const svg = d3.select("svg"),
+    inner = d3.select("svg g"),
+    zoom = d3.zoom().on("zoom", function () {
+      inner.attr("transform", d3.event.transform);
+    });
+  svg.call(zoom);
+
+  const render = dagreD3.render();
+
+  let isClient = false;
+  isClient = true;
+
+  if (isClient) {
+    cssRules = document.getElementById('graph-style').sheet.cssRules;
+    cssRules[3].style.opacity = 1;
+    cssRules[4].style.opacity = 1;
+
+    let graph;
+    graph = `digraph  {
+0 [class="start active", fillcolor="#5888f1", fontsize=12, label="BAŞLANGIÇ", style=filled];
+"-1" [class=end, fillcolor="#b01f4e", fontsize=12, label="BİTİŞ", style=filled];
+1 [class="", fontsize=12, label=transfer_form];
+2 [class="", fontsize=12, label=utter_confirm_transfer];
+3 [class="", fontsize=12, label=action_transfer_funds];
+4 [class="", fontsize=12, label=utter_transfer_funds];
+5 [class="", fontsize=12, label=utter_ask];
+7 [class="", fontsize=12, label=utter_ask_user];
+8 [class="", fontsize=12, label=transfer_form];
+9 [class="", fontsize=12, label=utter_ask_money_sum];
+10 [class="", fontsize=12, label=transfer_form];
+15 [class="", fontsize=12, label=utter_greet];
+16 [class="", fontsize=12, label=action_check_balance];
+17 [class="", fontsize=12, label=utter_ask];
+18 [class="", fontsize=12, label=action_answer_faq];
+26 [class="", fontsize=12, label=utter_noworries];
+27 [class="", fontsize=12, label=utter_goodbye];
+33 [class="", fontsize=12, label=utter_confirm_transfer];
+34 [class="", fontsize=12, label=utter_transfer_cancelled];
+35 [class="", fontsize=12, label=utter_ask];
+36 [class="", fontsize=12, label=utter_chitchat];
+37 [class="", fontsize=12, label=utter_ask];
+38 [class="", fontsize=12, label=utter_out_of_scope];
+41 [class="", fontsize=12, label="..."];
+42 [class="", fontsize=12, label=utter_ask_rephrase];
+44 [class="", fontsize=12, label=utter_request_bot_info];
+46 [class="", fontsize=12, label=action_answer_faq];
+48 [class="", fontsize=12, label=utter_noworries];
+58 [class="", fontsize=12, label=utter_greet];
+60 [class="", fontsize=12, label=utter_check_accountNumber];
+65 [class="", fontsize=12, label=action_list_transactions];
+68 [class="", fontsize=12, label=transfer_form];
+79 [class=intent, fillcolor="#BDCBD9", label="Aynur'a 543 TL gönder", shape=rect, style=filled];
+80 [class=intent, fillcolor="#BDCBD9", label="Günaydın", shape=rect, style=filled];
+81 [class=intent, fillcolor="#BDCBD9", label="Film önerir misin?", shape=rect, style=filled];
+82 [class=intent, fillcolor="#BDCBD9", label=Aynen, shape=rect, style=filled];
+83 [class=intent, fillcolor="#BDCBD9", label="Teşekkürler", shape=rect, style=filled];
+84 [class=intent, fillcolor="#BDCBD9", label=Zeynep, shape=rect, style=filled];
+85 [class=intent, fillcolor="#BDCBD9", label="717 TL", shape=rect, style=filled];
+86 [class=intent, fillcolor="#BDCBD9", label="Birikimlerimi göster", shape=rect, style=filled];
+87 [class=intent, fillcolor="#BDCBD9", label="BES nedir?", shape=rect, style=filled];
+88 [class=intent, fillcolor="#BDCBD9", label="Mürsel için 987 TL", shape=rect, style=filled];
+89 [class=intent, fillcolor="#BDCBD9", label="Görüşürüz", shape=rect, style=filled];
+90 [class=intent, fillcolor="#BDCBD9", label="Bence değil", shape=rect, style=filled];
+91 [class=intent, fillcolor="#BDCBD9", label="Nerede yaşıyorsun?", shape=rect, style=filled];
+92 [class=intent, fillcolor="#BDCBD9", label="/nlu_fallback", shape=rect, style=filled];
+93 [class=intent, fillcolor="#BDCBD9", label="Sen kimsin?", shape=rect, style=filled];
+94 [class=intent, fillcolor="#BDCBD9", label="Faiz nedir?", shape=rect, style=filled];
+95 [class=intent, fillcolor="#BDCBD9", label="Eline sağlık", shape=rect, style=filled];
+96 [class=intent, fillcolor="#BDCBD9", label="Keyifler nasıl?", shape=rect, style=filled];
+97 [class=intent, fillcolor="#BDCBD9", label="Fıkra anlat", shape=rect, style=filled];
+98 [class=intent, fillcolor="#BDCBD9", label="Hoşçakalın", shape=rect, style=filled];
+99 [class=intent, fillcolor="#BDCBD9", label=Selamlar, shape=rect, style=filled];
+100 [class=intent, fillcolor="#BDCBD9", label="Hesabıma bakar mısın?", shape=rect, style=filled];
+101 [class=intent, fillcolor="#BDCBD9", label="Ne kadar param var?", shape=rect, style=filled];
+102 [class=intent, fillcolor="#BDCBD9", label="Transferlerimi listele", shape=rect, style=filled];
+103 [class=intent, fillcolor="#BDCBD9", label="Deniz'e 123 TL yolla", shape=rect, style=filled];
+104 [class=intent, fillcolor="#BDCBD9", label=Tabi, shape=rect, style=filled];
+105 [class=intent, fillcolor="#BDCBD9", label=Asla, shape=rect, style=filled];
+0 -> 41  [class="", key=NONE, label=""];
+0 -> 79  [class="", key=0];
+0 -> 80  [class="", key=0];
+0 -> 81  [class="", key=0];
+1 -> 2  [class="", key=NONE, label=""];
+1 -> 7  [class="", key=NONE, label=""];
+2 -> 82  [class="", key=0];
+3 -> 4  [class="", key=NONE, label=""];
+4 -> 5  [class="", key=NONE, label=""];
+5 -> "-1"  [class="", key=NONE, label=""];
+5 -> 83  [class="", key=0];
+7 -> 84  [class="", key=0];
+8 -> 9  [class="", key=NONE, label=""];
+9 -> 85  [class="", key=0];
+10 -> 2  [class="", key=NONE, label=""];
+10 -> 33  [class="", key=NONE, label=""];
+15 -> 86  [class="", key=0];
+16 -> 17  [class="", key=NONE, label=""];
+16 -> 37  [class="", key=NONE, label=""];
+17 -> 87  [class="", key=0];
+18 -> "-1"  [class="", key=NONE, label=""];
+18 -> 88  [class="", key=0];
+26 -> 89  [class="", key=0];
+27 -> "-1"  [class="", key=NONE, label=""];
+33 -> "-1"  [class="", key=NONE, label=""];
+33 -> 90  [class="", key=0];
+34 -> 35  [class="", key=NONE, label=""];
+35 -> "-1"  [class="", key=NONE, label=""];
+35 -> 91  [class="", key=0];
+36 -> 37  [class="", key=NONE, label=""];
+37 -> "-1"  [class="", key=NONE, label=""];
+38 -> 17  [class="", key=NONE, label=""];
+38 -> 37  [class="", key=NONE, label=""];
+41 -> 10  [class="", key=NONE, label=""];
+41 -> 92  [class="", key=0];
+41 -> 93  [class="", key=0];
+41 -> 94  [class="", key=0];
+41 -> 95  [class="", key=0];
+41 -> 96  [class="", key=0];
+41 -> 97  [class="", key=0];
+41 -> 98  [class="", key=0];
+41 -> 99  [class="", key=0];
+41 -> 100  [class="", key=0];
+41 -> 101  [class="", key=0];
+41 -> 102  [class="", key=0];
+41 -> 103  [class="", key=0];
+41 -> 104  [class="", key=0];
+41 -> 105  [class="", key=0];
+42 -> "-1"  [class="", key=NONE, label=""];
+44 -> "-1"  [class="", key=NONE, label=""];
+46 -> "-1"  [class="", key=NONE, label=""];
+48 -> "-1"  [class="", key=NONE, label=""];
+58 -> "-1"  [class="", key=NONE, label=""];
+60 -> "-1"  [class="", key=NONE, label=""];
+65 -> 37  [class="", key=NONE, label=""];
+68 -> "-1"  [class="", key=NONE, label=""];
+79 -> 1  [class="", key=0];
+80 -> 15  [class="", key=0];
+81 -> 38  [class="", key=0];
+82 -> 3  [class="", key=0];
+83 -> 26  [class="", key=0];
+84 -> 8  [class="", key=0];
+85 -> 10  [class="", key=0];
+86 -> 16  [class="", key=0];
+87 -> 18  [class="", key=0];
+88 -> 8  [class="", key=0];
+89 -> 27  [class="", key=0];
+90 -> 34  [class="", key=0];
+91 -> 36  [class="", key=0];
+92 -> 42  [class="", key=0];
+93 -> 44  [class="", key=0];
+94 -> 46  [class="", key=0];
+95 -> 48  [class="", key=0];
+96 -> 36  [class="", key=0];
+97 -> 38  [class="", key=0];
+98 -> 27  [class="", key=0];
+99 -> 58  [class="", key=0];
+100 -> 60  [class="", key=0];
+101 -> 16  [class="", key=0];
+102 -> 65  [class="", key=0];
+103 -> 68  [class="", key=0];
+104 -> 3  [class="", key=0];
+105 -> 34  [class="", key=0];
+}
+`;
+    drawGraph(graph);
+  } else {
+    serveGraph();
+  }
+
+
+</script>
+</body>
+</html>

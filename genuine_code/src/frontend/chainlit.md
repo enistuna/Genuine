@@ -2,7 +2,7 @@
 
 # Genuine'a Hoşgeldiniz
 
-Ben **Genuine**, açık, empatik ve etkili finansal destek sağlamak için tasarlanmış pragmatik farkındalığa sahip dijital bankacılık asistanınızım.
+Ben **Gən**, açık, empatik ve etkili finansal destek sağlamak için tasarlanmış pragmatik farkındalığa sahip dijital bankacılık asistanınızım.
 
 *Bugün size nasıl yardımcı olabilirim?*
 

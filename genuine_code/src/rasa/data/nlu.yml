@@ -131,10 +131,13 @@ nlu:
     - birikimlerimi öğrenmek istiyorum
     - birikimlerimi görmek istiyorum
     - birikimlerimi gösterebilir misin?
-    - birikimlerimi kontrol edebilir misin?
-    - birikimlerimi kontrol etmek istiyorum
     - birikimlerimi öğrenmek istiyorum
     - birikimlerimi görmek istiyorum
+    - Acaba hesabımda ne kadar para kaldığını öğrenebilir miyim?
+    - Rica etsem güncel bakiyemi kontrol edebilir misin?
+    - Sanırım hesabımda ne kadar para olduğunu unuttum, bakabilir misin?
+    - Mümkünse hesap bakiyemi öğrenmek istiyorum.
+    - Acaba bakiyem yeterli mi diye bir kontrol etme şansın var mı?
 
 - intent: check_accountNumber
   examples: |
@@ -190,8 +193,13 @@ nlu:
     - ücreti yolla
     - havale yap
     - para göndermem lazım
-    - [Ayşe](user) ye para aktar
     - para aktar
+    - Acaba [Ayşe](user)'ye [50 TL](money_sum) göndermem mümkün mü?
+    - Rica etsem [Ahmet](user)'e [100 lira](money_sum) transfer edebilir misin?
+    - Mümkünse para transferi işlemini gerçekleştirebilir miyiz?
+    - Sanırım [Veli](user)'ye biraz para yollamam gerekiyor, yardımcı olur musun?
+    - Acaba hesabımdan [Zeynep](user)'e [1000 TL](money_sum) aktarabilir misin, rica etsem?
+    - Lütfen [Mustafa](user) için [15 euro](money_sum) gönderme işlemini başlatır mısın?
 
 - intent: list_transactions
   examples: |

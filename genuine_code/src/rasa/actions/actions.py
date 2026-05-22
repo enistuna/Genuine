@@ -230,7 +230,7 @@ class ActionAnswerFAQ(Action, BaseActionMixin):
                 answer = rag_engine.query(user_message, user_profile=profile)
                 
                 if answer:
-                    response = f"**[Akıllı Gen]:**\n{answer}"
+                    response = f"**[Üretken Gən]:**\n{answer}"
                 else:
                     response = "Üzgünüm, bu konuda bankamızda kayıtlı bir bilgi bulamadım."
 
