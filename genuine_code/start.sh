@@ -14,4 +14,4 @@ sleep 20
 
 echo "Starting Chainlit UI"
 cd src/frontend
-python -m chainlit run app.py --port 7860 --host 0.0.0.0
+/home/user/app/venv_ui/bin/chainlit run app.py --port 7860 --host 0.0.0.0
