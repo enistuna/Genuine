@@ -1,6 +1,7 @@
 <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
 
-# **Gənuine: Pragmatical AI Fintech Chatbot**
+# **Gənuine v1: Pragmatical AI Fintech Chatbot**
+**A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI**
 
 # **Overview**
 *   **[Explanation of The Project](#explanation-of-the-project)**
@@ -8,17 +9,33 @@
     *   **[Features](#1-features)**
     *   **[Tech Stack](#2-tech-stack)**
     *   **[Workflow](#3-workflow)**
-    *   **[Data Flow](#4-data-flow)**
+    *   **[Data Flow](#4-dataflow)**
 *   **[Installation](#installation)**
-*   **[Rasa Conversation Flow Diagram](#Rasa-Conversation-Flow-Diagram)**
+*   **[Graphs and Visuals](#graphs-and-visuals)**
+    *   **[1. Rasa Conversation Flow Diagram](#1-rasa-conversation-flow-diagram)**
+    *   **[2. Pragmatic Network Graph](#2-pragmatic-network-graph)**
+    *   **[3. Chatbot UI](#3-chatbot-ui)**
 *   **[Explanation Video](#Explanation-Video)**
 *   **[Notes](#notes)**
 
 # **Explanation of The Project**
 
+***Gənuine v1*** is a specialized Turkish fintech conversational AI engineered to solve the inability of standard LLMs to understand the implied and contextual meaning behind human speech. By directly integrating Computational Pragmatics, *Gənuine* provides cooperative and empathetic banking assistance.
+
+*   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
+*   **Generative**: Utilizes a RAG pipeline (Pragmatic Guidebook) and Google Gemini AI to dynamically apply linguistic principles during conversational states.
+
+⭐ If you want to conveniently test *Gənuine* for yourself, you can also access the chatbot in *Gənuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** chatbot interface.
+
 # **Details**
 
 ## **1. Features**
+
+*   **Pragmatic Competence**: Actively infers underlying user intentions rather than relying on rigid keyword mapping. It doesn't solely rely on rule-based algorithms.
+*   **Gricean & Politeness Integration**: Algorithmically softens face-threatening acts (like declining transactions) to build user trust.
+*   **Hybrid Architecture**: Seamlessly switches between strict banking operations (Rasa) and context-aware pragmatic reasoning (Gemini API + RAG).
+*   **Implicit Confirmation**: Moves conversations forward efficiently without frustrating "Yes/No" verification loops.
+*   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
 
 ## **2. Tech Stack**
 * **Python**
@@ -36,28 +53,107 @@
 
 ## **3. Workflow**
 
-## **4. Data Flow**
+1.  **User Input**: User sends a message.
+2.  **Pragmatic Inference**: Rasa NLU analyzes the utterance to identify the true underlying intent.
+3.  **State-Tracking & Routing**:
+    *   **Direct Action**: Rasa Core triggers the Action Server for deterministic database queries via FastAPI.
+    *   **Pragmatic Generation**: High-risk or complex inputs are routed to the RAG pipeline. The system retrieves pragmatic rules from ChromaDB and generates a contextually appropriate response via Google Gemini AI.
+4.  **Response Delivery**: Pragmatically sound response is streamed to the user via the Chainlit frontend chat UI.
+
+## **4. Dataflow**
+
+*   **User** >> **UI (Chainlit)** >> **Rasa** (JSON payload via REST) >> **Action Server** (Custom Executors)
+    *   **Action Server** >> **Backend DB** (SQL Queries via FastAPI)
+    *   **Action Server** >> **RAG Pipeline** (ChromaDB Pragmatic Guidebook) >> **LLM**
 
 # **Installation**
 
-### Prerequisites
-*   Python 3.10
-*   Google Gemini API Key
+## Prerequisites
+*   **Python 3.10**
+*   **[Google Gemini API Key](aistudio.google.com/api-keys)**
 
-# **Rasa Conversation Flow Diagram**
+### 1. Clone the Repository
+```bash
+git clone https://github.com/enistuna/Genuine.git
+cd Genuine/genuine_code
+```
+
+### 2. Install Dependencies
+To prevent dependency conflicts between Rasa and Chainlit, Genuine uses two isolated virtual environments.
+
+#### Environment A: Core (Backend & Rasa)
+```bash
+py -3.10 -m venv venv_core
+.\venv_core\Scripts\activate
+uv pip install -r requirements_core.txt
+```
+
+#### Environment B: UI (Frontend)
+```bash
+py -3.10 -m venv venv_ui
+.\venv_ui\Scripts\activate
+uv pip install -r requirements_ui.txt
+```
+
+### 3. Environment Setup
+Create a `.env` file in the `genuine_code` directory:
+```ini
+GEMINI_API_KEY = YOUR_API_KEY # aistudio.google.com/api-keys
+DATABASE_URL = sqlite:///./genuine.db
+```
+
+### 4. Running the Application
+You will need 4 separate terminals running simultaneously. Execute them in order:
+
+**Terminal 1 (Backend Database) - `venv_core`**
+```bash
+.\venv_core\Scripts\activate
+python -m uvicorn src.backend.main:app --port 8001
+```
+
+**Terminal 2 (Rasa Action Server) -  `venv_core`**
+```bash
+.\venv_core\Scripts\activate
+python -m rasa run actions --actions src.rasa.actions --port 5055
+```
+
+**Terminal 3 (Rasa Core Server) -  `venv_core`**
+```bash
+.\venv_core\Scripts\activate
+python -m rasa run --enable-api --cors "*" --model src/rasa/models --endpoints src/rasa/endpoints.yml --credentials src/rasa/credentials.yml --port 5005
+```
+
+**Terminal 4 (Frontend UI) -  `venv_ui`**
+```bash
+.\venv_ui\Scripts\activate
+cd src/frontend
+python -m chainlit run app.py
+```
+
+# **Graphs and Visuals**
+
+## **1. Rasa Conversation Flow Diagram**
 
 <img src="project_documentation_files\graphics\rasa_visualize_conversational_graph.png" alt="rasa visualize" />
 
-# **Graph 1-2-3-4 (and more?)**
+## **2. Pragmatic Network Graph**
+
+* The graph below illustrates the neural architecture behind *Gənuine*'s dialogue management. The system transfers the conversational data through an advanced pragmatic algorithm. [Gephi](https://gephi.org) is used to create this graph.
+
+<img src="project_documentation_files\graphics\pragmatic_network_graph.svg" height = 750 width = 750 alt="gephi pragmatic graph" />
+
+## **3. Chatbot UI**
+
+<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />
 
 # **Explanation Video (Coming soon...)**
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
 
 # **Notes**
 
-* This project is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. I wrote my Bachelor's **[thesis paper](https://github.com/enistuna/Genuine) (coming soon...)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this project.
-* As of May 2026, ***Gənuine v1.0*** is finished being developed. This project will likely get an update in the foreseeable future as it was granted TÜBİTAK's 2209-A program's support. Think of ***Gənuine v1.0*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous in the future. I will be keeping everyone in the loop by releasing more version notes.
-* If you want to conveniently test ***Gənuine v1.0*** for yourself, you can also access the chatbot in **[Gənuine's Hugging Face Spaces page](https://huggingface.co/spaces/enistuna/Genuine)**.
+* ***Gənuine v1*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
+* I wrote my **[Bachelor's thesis paper](https://github.com/enistuna/Genuine) (coming soon...)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this graduation project.
+* As of May 2026, ***Gənuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Gənuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 <details>
