@@ -3,20 +3,22 @@
 # **Gənuine v1: Pragmatical Fintech Conversational AI**
 **A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
 
-# **Overview**
+# **Contents**
 *   **[Explanation of The Project](#explanation-of-the-project)**
 *   **[Details](#details)**
     *   **[Features](#1-features)**
     *   **[Tech Stack](#2-tech-stack)**
     *   **[Workflow](#3-workflow)**
     *   **[Data Flow](#4-dataflow)**
-*   **[Installation](#installation)**
+*   **[How to Use It?](#how-to-use-it)**
+    *   **[Installation](#installation)**
 *   **[Graphs and Visuals](#graphs-and-visuals)**
-    *   **[1. Rasa Conversation Flow Diagram](#1-rasa-conversation-flow-diagram)**
-    *   **[2. Pragmatic Network Graph](#2-pragmatic-network-graph)**
-    *   **[3. Chatbot UI](#3-chatbot-ui)**
-*   **[Explanation Video](#Explanation-Video)**
+    *   **[Rasa Conversation Flow Diagram](#1-rasa-conversation-flow-diagram)**
+    *   **[Pragmatic Network Graph](#2-pragmatic-network-graph)**
+    *   **[Chatbot UI](#3-chatbot-ui)**
+*   **[Explanation Video (coming soon...)](#explanation-video)**
 *   **[Notes](#notes)**
+*   **[References](#references)**
 
 # **Explanation of The Project**
 
@@ -24,8 +26,6 @@
 
 *   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
 *   **Generative**: Utilizes a RAG pipeline (Pragmatic Guidebook) and Google Gemini AI to dynamically apply linguistic principles during conversational states.
-
-⭐ If you want to conveniently test *Gənuine* for yourself, you can also access the chatbot in *Gənuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** chatbot interface.
 
 # **Details**
 
@@ -38,18 +38,7 @@
 *   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
 
 ## **2. Tech Stack**
-* **Python**
-* **Rasa**
-* **Chainlit**
-* **Google Gemini API**
-* **FastAPI**
-* **PyTorch**
-* **SQLite**
-* **SQLAlchemy**
-* **Pydantic**
-* **ChromaDB**
-* **LangChain**
-* **Sentence-Transformers**
+* Python, Rasa, Chainlit, LangChain, FastAPI, PyTorch, SQLite, SQLAlchemy, ChromaDB, Google Gemini API, Pydantic, Sentence-Transformers
 
 ## **3. Workflow**
 
@@ -66,44 +55,48 @@
     *   **Action Server** >> **Backend DB** (SQL Queries via FastAPI)
     *   **Action Server** >> **RAG Pipeline** (ChromaDB Pragmatic Guidebook) >> **LLM**
 
-# **Installation**
+# **How to Use It?**
 
-## Prerequisites
+* If you want to conveniently test ***Gənuine v1*** for yourself, you can access the chatbot in *Gənuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
+
+## **Installation**
+
+### **0. Prerequisites**
 *   **Python 3.10**
 *   **[Google Gemini API Key](aistudio.google.com/api-keys)**
 
-### 1. Clone the Repository
+### **1. Clone the Repository**
 ```bash
 git clone https://github.com/enistuna/Genuine.git
 cd Genuine/genuine_code
 ```
 
-### 2. Install Dependencies
-To prevent dependency conflicts between Rasa and Chainlit, Genuine uses two isolated virtual environments.
+### **2. Install Dependencies**
+Genuine uses two isolated virtual environments to prevent dependency conflicts between Rasa and Chainlit.
 
-#### Environment A: Core (Backend & Rasa)
+#### **Environment A: Core (Backend & Rasa)**
 ```bash
 py -3.10 -m venv venv_core
 .\venv_core\Scripts\activate
 uv pip install -r requirements_core.txt
 ```
 
-#### Environment B: UI (Frontend)
+#### **Environment B: UI (Frontend)**
 ```bash
 py -3.10 -m venv venv_ui
 .\venv_ui\Scripts\activate
 uv pip install -r requirements_ui.txt
 ```
 
-### 3. Environment Setup
-Create a `.env` file in the `genuine_code` directory:
+### **3. Environment Setup**
+Create a `.env` file in the `genuine_code` directory and add the following:
 ```ini
-GEMINI_API_KEY = YOUR_API_KEY # aistudio.google.com/api-keys
-DATABASE_URL = sqlite:///./genuine.db
+GEMINI_API_KEY = YOUR_API_KEY_HERE # aistudio.google.com/api-keys
+DATABASE_URL = sqlite:///./data/genuine.db
 ```
 
-### 4. Running the Application
-You will need 4 separate terminals running simultaneously. Execute them in order:
+### **4. Running the Application**
+You will need 4 separate terminals running simultaneously. Execute them in order. *Backend servers may take a while to boot up.*
 
 **Terminal 1 (Backend Database) - `venv_core`**
 ```bash
@@ -134,6 +127,8 @@ python -m chainlit run app.py
 
 ## **1. Rasa Conversation Flow Diagram**
 
+* The graph below illustrates the *Gənuine*'s rule-based dialogue path a user can take without using GenAI features.
+
 <img src="project_documentation_files\graphics\rasa_visualize_conversational_graph.png" alt="rasa visualize" />
 
 ## **2. Pragmatic Network Graph**
@@ -144,9 +139,11 @@ python -m chainlit run app.py
 
 ## **3. Chatbot UI**
 
+* Chatbot UI is designed to look as sleek and modern as possible.
+
 <img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />
 
-# **Explanation Video (Coming soon...)**
+# **Explanation Video**
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
 
 # **Notes**
@@ -156,8 +153,7 @@ python -m chainlit run app.py
 * As of May 2026, ***Gənuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Gənuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
-<details>
-  <summary><h2>References</h2></summary>
+# **References**
 
 1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100.
 
@@ -184,5 +180,3 @@ python -m chainlit run app.py
 12. Marak, Z. R., Pahari, S., Shekhar, R., & Tiwari, A. (2025). *Factors affecting chatbots in banking services: the UTAUT2 and innovation resistance theory perspective*. Journal of Innovation and Entrepreneurship, 14(1), 47.
 
 13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085).
-</details>
-
