@@ -140,7 +140,7 @@ python -m chainlit run app.py
 
 * The graph below illustrates the neural architecture behind *Gənuine*'s dialogue management. The system transfers the conversational data through an advanced pragmatic algorithm. [Gephi](https://gephi.org) is used to create this graph.
 
-<img src="project_documentation_files\graphics\pragmatic_network_graph.svg" height = 750 width = 750 alt="gephi pragmatic graph" />
+<img src="project_documentation_files\graphics\pragmatic_network_graph_white_background.png" height = 750 width = 750 alt="gephi pragmatic graph" />
 
 ## **3. Chatbot UI**
 
