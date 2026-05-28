@@ -1,4 +1,6 @@
-<img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
+<a href="https://www.linkedin.com/in/enistuna/"> 
+  <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
+</a>
 
 # <img width="42.58" height="14.75" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Gənuine v1: Pragmatical Fintech Conversational AI**
 **A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
