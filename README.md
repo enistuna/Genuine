@@ -9,7 +9,7 @@
     *   **[Features](#1-features)**
     *   **[Tech Stack](#2-tech-stack)**
     *   **[Workflow](#3-workflow)**
-    *   **[Data Flow](#4-dataflow)**
+    *   **[Dataflow](#4-dataflow)**
 *   **[How to Use It?](#how-to-use-it)**
     *   **[Installation](#installation)**
 *   **[Graphs and Visuals](#graphs-and-visuals)**
