@@ -25,7 +25,7 @@
 ***Gənuine v1*** is a specialized Turkish fintech conversational AI engineered to solve the inability of standard LLMs to understand the implied and contextual meaning behind human speech. By directly integrating Computational Pragmatics, *Gənuine* provides cooperative and empathetic banking assistance.
 
 *   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
-*   **Generative**: Utilizes a RAG pipeline (Pragmatic Guidebook) and Google Gemini AI to dynamically apply linguistic principles during conversational states.
+*   **Generative**: Utilizes a RAG pipeline and Google Gemini AI to dynamically apply linguistic principles during conversational states.
 
 # **Details**
 
@@ -139,9 +139,9 @@ python -m chainlit run app.py
 
 ## **3. Chatbot UI**
 
-* Chatbot UI is designed to look as sleek and modern as possible.
+* Chatbot UI is designed to look as sleek as possible.
 
-<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />
+[<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />](https://huggingface.co/spaces/enistuna/Genuine)
 
 # **Explanation Video**
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
