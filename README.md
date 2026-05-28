@@ -155,7 +155,7 @@ python -m chainlit run app.py
 
 # **References**
 
-1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100.
+1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100. **[TrGLUE Github Repository](https://github.com/turkish-nlp-suite/TrGLUE)**
 
 2. Attia, M., Muhamed, A., Alkhamissi, M., Solorio, T., & Diab, M. (2026, March). *Beyond Understanding: Evaluating the Pragmatic Gap in LLMs’ Cultural Processing of Figurative Language*. In Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 7238-7265).
 
@@ -165,7 +165,7 @@ python -m chainlit run app.py
 
 5. Bastian, M., Heymann, S., & Jacomy, M. (2009, March). *Gephi: an open source software for exploring and manipulating networks*. In Proceedings of the international AAAI conference on web and social media (Vol. 3, No. 1, pp. 361-362).
 
-6. Bocklisch, T., Faulkner, J., Pawlowski, N., & Nichol, A. (2017). *Rasa: Open source language understanding and dialogue management*. arXiv preprint arXiv:1712.05181.
+6. Bocklisch, T., Faulkner, J., Pawlowski, N., & Nichol, A. (2017). *Rasa: Open source language understanding and dialogue management*. arXiv preprint arXiv:1712.05181. **[Rasa Github Repository](https://github.com/RasaHQ/rasa)**
 
 7. Bunt, H., & Black, W. (2000). *The ABC of Computational Pragmatics*.
 
@@ -179,4 +179,4 @@ python -m chainlit run app.py
 
 12. Marak, Z. R., Pahari, S., Shekhar, R., & Tiwari, A. (2025). *Factors affecting chatbots in banking services: the UTAUT2 and innovation resistance theory perspective*. Journal of Innovation and Entrepreneurship, 14(1), 47.
 
-13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085).
+13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085). **[GRICE Github Repository](https://github.com/zilongzheng/grice-dataset)**
