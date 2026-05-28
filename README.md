@@ -1,7 +1,7 @@
 <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
 
-# **Gənuine v1: Pragmatical AI Fintech Chatbot**
-**A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI**
+# **Gənuine v1: Pragmatical Fintech Conversational AI**
+**A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
 
 # **Overview**
 *   **[Explanation of The Project](#explanation-of-the-project)**
