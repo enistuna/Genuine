@@ -40,7 +40,7 @@
 *   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
 
 ## **2. Tech Stack**
-* Python, Rasa, Chainlit, LangChain, FastAPI, PyTorch, SQLite, SQLAlchemy, ChromaDB, Google Gemini API, Pydantic, Sentence-Transformers
+Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy - ChromaDB - Google Gemini API - Pydantic - Sentence-Transformers
 
 ## **3. Workflow**
 
@@ -59,7 +59,7 @@
 
 # **How to Use It?**
 
-* If you want to conveniently test ***Gənuine v1*** for yourself, you can access the chatbot in *Gənuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
+If you want to test ***Gənuine v1*** for yourself, you can access the chatbot in *Gənuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
 
 ## **Installation**
 
@@ -129,19 +129,19 @@ python -m chainlit run app.py
 
 ## **1. Rasa Conversation Flow Diagram**
 
-* The graph below illustrates the *Gənuine*'s rule-based dialogue path a user can take without using GenAI features.
+The graph below illustrates the *Gənuine*'s rule-based dialogue path a user can take without using GenAI features.
 
 <img src="project_documentation_files\graphics\rasa_visualize_conversational_graph.png" alt="rasa visualize" />
 
 ## **2. Pragmatic Network Graph**
 
-* The graph below illustrates the neural architecture behind *Gənuine*'s dialogue management. The system transfers the conversational data through an advanced pragmatic algorithm. [Gephi](https://gephi.org) is used to create this graph.
+The graph below illustrates the neural architecture behind *Gənuine*'s dialogue management. The system transfers the conversational data through an advanced pragmatic algorithm. [Gephi](https://gephi.org) is used to create this graph.
 
 <img src="project_documentation_files\graphics\pragmatic_network_graph_white_background.png" height = 750 width = 750 alt="gephi pragmatic graph" />
 
 ## **3. Chatbot UI**
 
-* Chatbot UI is designed to look as sleek as possible.
+Chatbot UI is designed to look as sleek as possible.
 
 [<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />](https://huggingface.co/spaces/enistuna/Genuine)
 
