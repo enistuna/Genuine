@@ -34,7 +34,7 @@
 ## **1. Features**
 
 *   **Pragmatic Competence**: Actively infers underlying user intentions rather than relying on rigid keyword mapping. It doesn't solely rely on rule-based algorithms.
-*   **Gricean & Politeness Integration**: Algorithmically softens face-threatening acts (like declining transactions) to build user trust.
+*   **Gricean & Politeness Integration**: Algorithmically softens face-threatening acts to build user trust.
 *   **Hybrid Architecture**: Seamlessly switches between strict banking operations (Rasa) and context-aware pragmatic reasoning (Gemini API + RAG).
 *   **Implicit Confirmation**: Moves conversations forward efficiently without frustrating "Yes/No" verification loops.
 *   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
@@ -53,9 +53,9 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
 
 ## **4. Dataflow**
 
-*   **User** >> **UI (Chainlit)** >> **Rasa** (JSON payload via REST) >> **Action Server** (Custom Executors)
-    *   **Action Server** >> **Backend DB** (SQL Queries via FastAPI)
-    *   **Action Server** >> **RAG Pipeline** (ChromaDB Pragmatic Guidebook) >> **LLM**
+*   **User** >> **UI** >> **Rasa** >> **Action Server**
+    *   **Action Server** >> **Backend Database**
+    *   **Action Server** >> **RAG Pipeline** >> **LLM**
 
 # **How to Use It?**
 
@@ -65,7 +65,7 @@ If you want to test ***Gənuine v1*** for yourself, you can access the chatbot i
 
 ### **0. Prerequisites**
 *   **Python 3.10**
-*   **[Google Gemini API Key](aistudio.google.com/api-keys)**
+*   **[Google Gemini API Key](https://aistudio.google.com/api-keys)**
 
 ### **1. Clone the Repository**
 ```bash
