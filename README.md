@@ -152,7 +152,7 @@ Chatbot UI is designed to look as sleek as possible.
 
 * ***Gənuine v1*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
 * I wrote my **[Bachelor's thesis paper](https://github.com/enistuna/Genuine) (coming soon...)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this graduation project.
-* As of May 2026, ***Gənuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Gənuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
+* As of May 2026, ***Gənuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Gənuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous with the help of TÜBİTAK 2209-A program. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 # **References**
