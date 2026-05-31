@@ -7,6 +7,7 @@
 
 # **Contents**
 *   **[Explanation of The Project](#explanation-of-the-project)**
+*   **[Theoretical Foundations](#theoretical-foundations)**
 *   **[Details](#details)**
     *   **[Features](#1-features)**
     *   **[Tech Stack](#2-tech-stack)**
@@ -19,15 +20,22 @@
     *   **[Pragmatic Network Graph](#2-pragmatic-network-graph)**
     *   **[Chatbot UI](#3-chatbot-ui)**
 *   **[Explanation Video (coming soon...)](#explanation-video)**
-*   **[Notes](#notes)**
+*   **[Notes & Acknowledgements](#notes--acknowledgements)**
 *   **[References](#references)**
 
 # **Explanation of The Project**
 
-***Gənuine v1*** is a specialized Turkish fintech conversational AI engineered to solve the inability of standard LLMs to understand the implied and contextual meaning behind human speech. By directly integrating Computational Pragmatics, *Gənuine* provides cooperative and empathetic banking assistance.
+***Gənuine v1*** is a specialized Turkish fintech conversational AI engineered to solve an inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Gənuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
 
 *   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
 *   **Generative**: Utilizes a RAG pipeline and Google Gemini AI to dynamically apply linguistic principles during conversational states.
+
+# **Theoretical Foundations**
+
+This project is built upon three core pillars of Pragmatics:
+*   **Speech Act Theory:** Re-categorizing standard NLP intents (e.g., *Check Balance*) into classical Speech Acts (e.g., *Directives*) to inform the system's conversational tone.
+*   **The Gricean Maxims:** Utilizing a RAG pipeline to enforce the Cooperative Principle (Quantity, Quality, Relation, Manner), thereby constraining LLM verbosity and preventing cognitive overload.
+*   **Politeness Theory:** Algorithmically deploying *Negative Politeness* strategies to soften *Face-Threatening Acts (FTAs)* like loan rejections, which directly mitigates user trust issues and lowers the risk barrier.
 
 # **Details**
 
@@ -36,6 +44,7 @@
 *   **Pragmatic Competence**: Actively infers underlying user intentions rather than relying on rigid keyword mapping. It doesn't solely rely on rule-based algorithms.
 *   **Gricean & Politeness Integration**: Algorithmically softens face-threatening acts to build user trust.
 *   **Hybrid Architecture**: Seamlessly switches between strict banking operations (Rasa) and context-aware pragmatic reasoning (Gemini API + RAG).
+*   **Linguistic Datasets**: Utilizes the **[GRICE](https://github.com/zilongzheng/grice-dataset)** dataset to build a semantic vector library for resolving implicatures, and the **[TrCOLA](https://github.com/turkish-nlp-suite/TrGLUE)** dataset for enforcing strict syntactic morphological guardrails via few-shot prompting.
 *   **Implicit Confirmation**: Moves conversations forward efficiently without frustrating "Yes/No" verification loops.
 *   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
 
@@ -53,9 +62,10 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
 
 ## **4. Dataflow**
 
-*   **User** >> **UI** >> **Rasa** >> **Action Server**
-    *   **Action Server** >> **Backend Database**
-    *   **Action Server** >> **RAG Pipeline** >> **LLM**
+*   **User** *>>* **Chainlit UI** *>>* **Rasa** 
+    * *>>* **Action Server**
+        *   *>>* **Backend Database**
+        *   *>>* **RAG Pipeline** *>>* **LLM**
 
 # **How to Use It?**
 
@@ -91,9 +101,9 @@ uv pip install -r requirements_ui.txt
 ```
 
 ### **3. Environment Setup**
-Create a `.env` file in the `genuine_code` directory and add the following:
+First, get your **[Google Gemini API Key](https://aistudio.google.com/api-keys)** and then create a `.env` file in the `genuine_code` directory and add the following:
 ```ini
-GEMINI_API_KEY = YOUR_API_KEY_HERE # aistudio.google.com/api-keys
+GEMINI_API_KEY = API_KEY
 DATABASE_URL = sqlite:///./data/genuine.db
 ```
 
@@ -148,16 +158,17 @@ Chatbot UI is designed to look as sleek as possible.
 # **Explanation Video**
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
 
-# **Notes**
+# **Notes & Acknowledgements**
 
 * ***Gənuine v1*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
+* ***Gənuine v1***'s development was supervised by Dr. Özgün Koşaner from Dokuz Eylül University's Department of Linguistics.
 * I wrote my **[Bachelor's thesis paper](https://github.com/enistuna/Genuine) (coming soon...)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this graduation project.
 * As of May 2026, ***Gənuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Gənuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous with the help of TÜBİTAK 2209-A program. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 # **References**
 
-1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100. **[TrGLUE Github Repository](https://github.com/turkish-nlp-suite/TrGLUE)**
+1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100.
 
 2. Attia, M., Muhamed, A., Alkhamissi, M., Solorio, T., & Diab, M. (2026, March). *Beyond Understanding: Evaluating the Pragmatic Gap in LLMs’ Cultural Processing of Figurative Language*. In Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 7238-7265).
 
@@ -167,7 +178,7 @@ Chatbot UI is designed to look as sleek as possible.
 
 5. Bastian, M., Heymann, S., & Jacomy, M. (2009, March). *Gephi: an open source software for exploring and manipulating networks*. In Proceedings of the international AAAI conference on web and social media (Vol. 3, No. 1, pp. 361-362).
 
-6. Bocklisch, T., Faulkner, J., Pawlowski, N., & Nichol, A. (2017). *Rasa: Open source language understanding and dialogue management*. arXiv preprint arXiv:1712.05181. **[Rasa Github Repository](https://github.com/RasaHQ/rasa)**
+6. Bocklisch, T., Faulkner, J., Pawlowski, N., & Nichol, A. (2017). *Rasa: Open source language understanding and dialogue management*. arXiv preprint arXiv:1712.05181.
 
 7. Bunt, H., & Black, W. (2000). *The ABC of Computational Pragmatics*.
 
@@ -181,4 +192,4 @@ Chatbot UI is designed to look as sleek as possible.
 
 12. Marak, Z. R., Pahari, S., Shekhar, R., & Tiwari, A. (2025). *Factors affecting chatbots in banking services: the UTAUT2 and innovation resistance theory perspective*. Journal of Innovation and Entrepreneurship, 14(1), 47.
 
-13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085). **[GRICE Github Repository](https://github.com/zilongzheng/grice-dataset)**
+13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085).
