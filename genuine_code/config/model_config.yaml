@@ -1,5 +1,5 @@
 rag:
-  model_name: "gemini-2.0-flash"
+  model_name: "gemini-2.5-flash"
   embeddings_model: "sentence-transformers/all-MiniLM-L6-v2"
   persist_dir: "./data/chroma"
   collection_name: "genuine_docs"

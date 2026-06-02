@@ -40,7 +40,7 @@ class RealRAGEngine:
         except Exception as e:
             logger.error(f"Failed to load config: {e}. Using defaults.")
             self.config = {
-                "model_name": "gemini-2.0-flash",
+                "model_name": "gemini-2.5-flash",
                 "embeddings_model": "sentence-transformers/all-MiniLM-L6-v2",
                 "persist_dir": "./data/chroma",
                 "collection_name": "genuine_docs",
@@ -63,7 +63,7 @@ class RealRAGEngine:
         if not self.api_key:
             logger.warning("GEMINI_API_KEY not found. GenAI will be disabled (or mocked).")
         
-        self.model_name = self.config.get("model_name", "gemini-2.0-flash")
+        self.model_name = self.config.get("model_name", "gemini-2.5-flash")
 
         if not self.mock_mode:
             try:
