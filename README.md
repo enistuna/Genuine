@@ -25,7 +25,7 @@
 
 # **Explanation of The Project**
 
-***Genuine v1*** is a specialized Turkish fintech conversational AI engineered to solve an inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
+***Genuine v1*** is a specialized Turkish fintech conversational AI engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
 
 *   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
 *   **Generative**: Utilizes a RAG pipeline and Google Gemini AI to dynamically apply linguistic principles during conversational states.
