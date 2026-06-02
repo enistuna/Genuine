@@ -156,7 +156,7 @@ Chatbot UI is designed to look as sleek as possible.
 [<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />](https://huggingface.co/spaces/enistuna/Genuine)
 
 # **Explanation Video**
-[<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://www.youtube.com/@enistuna/videos)
+[<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://youtu.be/DZsXxEKgTe4?si=e9Xac_9LuukByNUU)
 
 # **Notes & Acknowledgements**
 
