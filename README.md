@@ -2,7 +2,7 @@
   <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
 </a>
 
-# <img width="42.58" height="14.75" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> ***Genuine v1: Pragmatical Fintech Conversational AI***
+# <img width="42.58" height="14.75" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> ***Genuine: Pragmatical Fintech Conversational AI***
 **A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
 
 # **Contents**
@@ -25,7 +25,7 @@
 
 # **Explanation of The Project**
 
-***Genuine v1*** is a specialized Turkish fintech conversational AI engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
+***Genuine*** is a specialized Turkish fintech conversational AI engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
 
 *   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
 *   **Generative**: Utilizes a RAG pipeline and Google Gemini AI to dynamically apply linguistic principles during conversational states.
@@ -69,7 +69,7 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
 
 # **How to Use It?**
 
-* If you want to test ***Genuine v1*** for yourself, you can access the chatbot in *Genuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
+* If you want to test ***Genuine*** for yourself, you can access the chatbot in *Genuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
 
     ## **Installation**
 
@@ -160,8 +160,8 @@ Chatbot UI is designed to look as sleek as possible.
 
 # **Notes & Acknowledgements**
 
-* ***Genuine v1*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
-* ***Genuine v1***'s development was supervised by Dr. Özgün Koşaner from Dokuz Eylül University's Department of Linguistics.
+* ***Genuine*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
+* ***Genuine***'s development was supervised by Dr. Özgün Koşaner from Dokuz Eylül University's Department of Linguistics.
 * I wrote my **[Bachelor's thesis paper](https://github.com/enistuna/Genuine/blob/main/project_documentation_files/Bachelor's%20Thesis%20Paper.pdf)** on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this graduation project.
 * As of May 2026, ***Genuine v1*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Genuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous with the help of TÜBİTAK 2209-A program. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
 * For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
