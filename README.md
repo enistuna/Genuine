@@ -3,43 +3,43 @@
 </a>
 
 # <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> ***Genuine: Pragmatical Fintech Conversational AI***
-**A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
+***A Conversational AI that Bridges the Pragmatic Gap by Blending Pragmatical Theories, Rule-Based Systems and GenAI for Digital Banking Applications***
 
 # **Contents**
 *   **[Explanation of The Project](#explanation-of-the-project)**
     *   **[Theoretical Foundations](#theoretical-foundations)**
 *   **[Details](#details)**
-    *   **[Features](#1-features)**
-    *   **[Tech Stack](#2-tech-stack)**
-    *   **[Workflow](#3-workflow)**
-    *   **[Dataflow](#4-dataflow)**
+    *   **[Features](#features)**
+    *   **[Tech Stack](#tech-stack)**
+    *   **[Workflow](#workflow)**
+    *   **[Dataflow](#dataflow)**
 *   **[How to Use It?](#how-to-use-it)**
     *   **[Installation](#installation)**
 *   **[Graphs and Visuals](#graphs-and-visuals)**
-    *   **[Rasa Conversation Flow Diagram](#1-rasa-conversation-flow-diagram)**
-    *   **[Pragmatic Network Graph](#2-pragmatic-network-graph)**
-    *   **[Chatbot UI](#3-chatbot-ui)**
+    *   **[Rasa Conversation Flow Diagram](#rasa-conversation-flow-diagram)**
+    *   **[Pragmatic Network Graph](#pragmatic-network-graph)**
+    *   **[Chatbot UI](#chatbot-ui)**
 *   **[Explanation Video](#explanation-video)**
 *   **[Notes & Acknowledgements](#notes--acknowledgements)**
 *   **[References](#references)**
 
-# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Explanation of The Project**
+# **Explanation of The Project**
 
-***Genuine*** is a specialized Turkish fintech conversational AI engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
+***Genuine*** is a specialized Turkish fintech chatbot that is engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. *Genuine* directly integrates computational pragmatics to decode non-literal intentions and to ensure strict transactional accuracy while significantly lowering the user's perceived risk barrier during face threatening banking acts. This is achieved by having a hybrid system architecture.
 
-*   **Rule-Based**: Uses Rasa to deterministically track the dialogue state and maintain context without repetitive explicit confirmations.
-*   **Generative**: Utilizes a RAG pipeline and Google Gemini AI to dynamically apply linguistic principles during conversational states.
+*   **Rule-Based**: It uses Rasa to deterministically track the dialogue state and maintain context.
+*   **Generative**: It utilizes a RAG pipeline and GenAI to dynamically apply linguistic principles during conversational states.
 
     ## **Theoretical Foundations**
 
     This project is built upon three core pillars of Pragmatics:
-    *   **Speech Act Theory:** Re-categorizing standard NLP intents (e.g., *Check Balance*) into classical Speech Acts (e.g., *Directives*) to inform the system's conversational tone.
-    *   **The Gricean Maxims:** Utilizing a RAG pipeline to enforce the Cooperative Principle (Quantity, Quality, Relation, Manner), thereby constraining LLM verbosity and preventing cognitive overload.
+    *   **Speech Act Theory:** Re-categorizing standard NLP intents (e.g., *Check Balance*) into classical *Speech Acts* (e.g., *Directives*) to inform the system's conversational tone.
+    *   **The Gricean Maxims:** Utilizing a RAG pipeline to enforce the *Cooperative Principle*, thereby constraining LLM verbosity and preventing cognitive overload.
     *   **Politeness Theory:** Algorithmically deploying *Negative Politeness* strategies to soften *Face-Threatening Acts (FTAs)* like loan rejections, which directly mitigates user trust issues and lowers the risk barrier.
 
-# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Details**
+# **Details**
 
-## **1. Features**
+## **Features**
 
 *   **Pragmatic Competence**: Actively infers underlying user intentions rather than relying on rigid keyword mapping. It doesn't solely rely on rule-based algorithms.
 *   **Gricean & Politeness Integration**: Algorithmically softens face-threatening acts to build user trust.
@@ -48,10 +48,10 @@
 *   **Implicit Confirmation**: Moves conversations forward efficiently without frustrating "Yes/No" verification loops.
 *   **Modern UI**: Fully localized Turkish chat interface built with Chainlit.
 
-## **2. Tech Stack**
+## **Tech Stack**
 Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy - ChromaDB - Google Gemini API - Pydantic - Sentence-Transformers
 
-## **3. Workflow**
+## **Workflow**
 
 1.  **User Input**: User sends a message.
 2.  **Pragmatic Inference**: Rasa NLU analyzes the utterance to identify the true underlying intent.
@@ -60,14 +60,14 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
     *   **Pragmatic Generation**: High-risk or complex inputs are routed to the RAG pipeline. The system retrieves pragmatic rules from ChromaDB and generates a contextually appropriate response via Google Gemini AI.
 4.  **Response Delivery**: Pragmatically sound response is streamed to the user via the Chainlit frontend chat UI.
 
-## **4. Dataflow**
+## **Dataflow**
 
 *   **User** *>>* **Chainlit UI** *>>* **Rasa** 
     * *>>* **Action Server**
         *   *>>* **Backend Database**
         *   *>>* **RAG Pipeline** *>>* **LLM**
 
-# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **How to Use It?**
+# **How to Use It?**
 
 * If you want to test ***Genuine*** for yourself, you can access the chatbot in *Genuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
 
@@ -84,7 +84,7 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
     ```
 
     ### **2. Install Dependencies**
-    * Genuine uses two isolated virtual environments to prevent dependency conflicts between Rasa and Chainlit.
+    * Genuine uses two isolated virtual environments to prevent dependency conflicts.
 
         #### **Environment A: Core (Backend & Rasa)**
         ```bash
@@ -107,10 +107,10 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
         DATABASE_URL = sqlite:///./data/genuine.db
         ```
 
-    ### **4. Running the Application**
-    * You will need 4 separate terminals running simultaneously. Execute them in order. *Backend servers may take a while to boot up.*
+    ### **4. Run the Application**
+    * You will need 4 separate terminals running simultaneously. Execute them in order.
 
-        **Terminal 1 (Backend Database) - `venv_core`**
+        **Terminal 1 (Backend) - `venv_core`**
         ```bash
         .\venv_core\Scripts\activate
         python -m uvicorn src.backend.main:app --port 8001
@@ -128,47 +128,46 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
         python -m rasa run --enable-api --cors "*" --model src/rasa/models --endpoints src/rasa/endpoints.yml --credentials src/rasa/credentials.yml --port 5005
         ```
 
-        **Terminal 4 (Frontend UI) -  `venv_ui`**
+        **Terminal 4 (Frontend) -  `venv_ui`**
         ```bash
         .\venv_ui\Scripts\activate
         cd src/frontend
         python -m chainlit run app.py
         ```
 
-# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Graphs and Visuals**
+# **Graphs and Visuals**
 
-## **1. Rasa Conversation Flow Diagram**
+## **Rasa Conversation Flow Diagram**
 
 The graph below illustrates the *Genuine*'s rule-based dialogue path a user can take without using GenAI features.
 
 <img src="project_documentation_files\graphics\rasa_visualize_conversational_graph.png" alt="rasa visualize" />
 
-## **2. Pragmatic Network Graph**
+## **Pragmatic Network Graph**
 
 The graph below illustrates the neural architecture behind *Genuine*'s dialogue management. The system transfers the conversational data through an advanced pragmatic algorithm. [Gephi](https://gephi.org) is used to create this graph.
 
 <img src="project_documentation_files\graphics\pragmatic_network_graph_white_background.png" height = 750 width = 750 alt="gephi pragmatic graph" />
 
-## **3. Chatbot UI**
-
-Chatbot UI is designed to look as sleek as possible.
+## **Chatbot UI**
 
 [<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />](https://huggingface.co/spaces/enistuna/Genuine)
 
-# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Explanation Video**
+# **Explanation Video**
+
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://youtu.be/DZsXxEKgTe4?si=e9Xac_9LuukByNUU)
 
 # **Notes & Acknowledgements**
 
-* ***Genuine*** is the successor of **[Finchat](https://github.com/enistuna/Finchat)** project. 
-* ***Genuine***'s development was supervised by Dr. Özgün Koşaner from Dokuz Eylül University's Department of Linguistics.
-* I wrote my Bachelor's thesis paper on how improving a banking chatbot's pragmatic competancy will lead to better user experience through the lens of this graduation project. You can read the official paper on **[ResearchGate](https://www.researchgate.net/publication/406196734_Introducing_Genuine_Pragmatical_Conversational_AI_for_Digital_Banking_and_Fintech_Applications)**.
+- ***Genuine*** is a successor project to **[Finchat](https://github.com/enistuna/Finchat)**. 
+* This graduation thesis project's development was supervised by **[Dr. Özgün Koşaner](https://dilbilim.deu.edu.tr/prof-dr-ozgun-kosaner/)** from Dokuz Eylül University's Department of Linguistics.
+- Check out the thesis paper on Genuine's official **[ResearchGate page](https://www.researchgate.net/publication/406196734_Introducing_Genuine_Pragmatical_Conversational_AI_for_Digital_Banking_and_Fintech_Applications)** if you want to learn more about this project.
 * As of May 2026, ***[Genuine v1](https://github.com/enistuna/Genuine/releases/tag/v1.0)*** is finished being developed. This graduation project will likely get an update in the foreseeable future as it was granted **TÜBİTAK 2209-A program**'s support. Think of ***Genuine v1*** as the **first version** of the project as I iron out the wrinkles and make it more rigorous with the help of TÜBİTAK 2209-A program. I will be keeping everyone in the loop by adding more notes related to upcoming releases and versions.
-* For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
+- For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 # **References**
 
-1.  Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100.
+1. Altinok, D. (2025). *Introducing TrGLUE and SentiTurca: A Comprehensive Benchmark for Turkish General Language Understanding and Sentiment Analysis*. arXiv preprint arXiv:2512.22100.
 
 2. Attia, M., Muhamed, A., Alkhamissi, M., Solorio, T., & Diab, M. (2026, March). *Beyond Understanding: Evaluating the Pragmatic Gap in LLMs’ Cultural Processing of Figurative Language*. In Proceedings of the 19th Conference of the European Chapter of the Association for Computational Linguistics (Volume 1: Long Papers) (pp. 7238-7265).
 
