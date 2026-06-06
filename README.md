@@ -1,8 +1,8 @@
 <a href="https://www.linkedin.com/in/enistuna/"> 
-  <img width="1280" height="180" alt="logo" src="project_documentation_files\graphics\v2.png" />
+  <img alt="genuine logo" src="project_documentation_files\graphics\v2.png" />
 </a>
 
-# <img width="42.58" height="14.75" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> ***Genuine: Pragmatical Fintech Conversational AI***
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> ***Genuine: Pragmatical Fintech Conversational AI***
 **A Conversational AI that bridges the Pragmatic Gap by blending Pragmatical theories, Rule-Based systems and GenAI for Digital Banking Applications**
 
 # **Contents**
@@ -23,7 +23,7 @@
 *   **[Notes & Acknowledgements](#notes--acknowledgements)**
 *   **[References](#references)**
 
-# **Explanation of The Project**
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Explanation of The Project**
 
 ***Genuine*** is a specialized Turkish fintech conversational AI engineered to solve the problem of inability to grasp the contextual rules of human communication, for which I am calling the *Pragmatic Gap*. Operating as a hybrid engine, *Genuine* directly integrates Computational Pragmatics to decode non-literal intentions, ensuring strict transactional accuracy while significantly lowering the user's perceived risk barrier during face-threatening banking acts.
 
@@ -37,7 +37,7 @@
     *   **The Gricean Maxims:** Utilizing a RAG pipeline to enforce the Cooperative Principle (Quantity, Quality, Relation, Manner), thereby constraining LLM verbosity and preventing cognitive overload.
     *   **Politeness Theory:** Algorithmically deploying *Negative Politeness* strategies to soften *Face-Threatening Acts (FTAs)* like loan rejections, which directly mitigates user trust issues and lowers the risk barrier.
 
-# **Details**
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Details**
 
 ## **1. Features**
 
@@ -67,7 +67,7 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
         *   *>>* **Backend Database**
         *   *>>* **RAG Pipeline** *>>* **LLM**
 
-# **How to Use It?**
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **How to Use It?**
 
 * If you want to test ***Genuine*** for yourself, you can access the chatbot in *Genuine's* **[Hugging Face Spaces](https://huggingface.co/spaces/enistuna/Genuine)** page. But if you want to try it locally, then proceed with the following steps:
 
@@ -135,7 +135,7 @@ Python - Rasa - Chainlit - LangChain - FastAPI - PyTorch - SQLite - SQLAlchemy -
         python -m chainlit run app.py
         ```
 
-# **Graphs and Visuals**
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Graphs and Visuals**
 
 ## **1. Rasa Conversation Flow Diagram**
 
@@ -155,7 +155,7 @@ Chatbot UI is designed to look as sleek as possible.
 
 [<img src="project_documentation_files\graphics\gen_interface_1.png" height = 436 width = 750 alt="chat UI 1" />](https://huggingface.co/spaces/enistuna/Genuine)
 
-# **Explanation Video**
+# <img width="50.20" height="16.90" alt="genuine icon" src="project_documentation_files/graphics/gen_icon.png" /> **Explanation Video**
 [<img src="project_documentation_files\graphics\thumbnail_v2.png" />](https://youtu.be/DZsXxEKgTe4?si=e9Xac_9LuukByNUU)
 
 # **Notes & Acknowledgements**
