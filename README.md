@@ -22,6 +22,7 @@
 *   **[Explanation Video](#explanation-video)**
 *   **[Notes & Acknowledgements](#notes--acknowledgements)**
 *   **[References](#references)**
+*   **[Attribution](#attribution)**
 
 # **Explanation of The Project**
 
@@ -192,3 +193,9 @@ The graph below illustrates the neural architecture behind *Genuine*'s dialogue 
 12. Marak, Z. R., Pahari, S., Shekhar, R., & Tiwari, A. (2025). *Factors affecting chatbots in banking services: the UTAUT2 and innovation resistance theory perspective*. Journal of Innovation and Entrepreneurship, 14(1), 47.
 
 13. Zheng, Z., Qiu, S., Fan, L., Zhu, Y., & Zhu, S. C. (2021, August). *Grice: A grammar-based dataset for recovering implicature and conversational reasoning*. In Findings of the Association for Computational Linguistics: ACL-IJCNLP 2021 (pp. 2074-2085).
+
+# **Attribution**
+
+* If you want to use this project in your own study, you can cite the ***Genuine*** as:
+
+Tuna, E. Introducing Genuine: Pragmatical Conversational AI for Digital Banking and Fintech Applications.
