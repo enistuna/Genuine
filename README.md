@@ -163,7 +163,7 @@ The graph below illustrates the neural architecture behind *Genuine*'s dialogue 
 - ***Genuine*** is a successor project to **[Finchat](https://github.com/enistuna/Finchat)**. 
 * This graduation thesis project's development was supervised by **[Dr. Özgün Koşaner](https://dilbilim.deu.edu.tr/prof-dr-ozgun-kosaner/)** from Dokuz Eylül University's Department of Linguistics.
 - Check out the thesis paper on Genuine's official **[ResearchGate page](https://www.researchgate.net/publication/406196734_Introducing_Genuine_Pragmatical_Conversational_AI_for_Digital_Banking_and_Fintech_Applications)** if you want to learn more about this project.
-- For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
+* For any question, contribution or inquiry, **[send me an email](mailto:enissstuna@gmail.com)**.
 
 # **References**
 
